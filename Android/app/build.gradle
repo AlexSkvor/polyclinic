@@ -6,7 +6,6 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
 
-
     defaultConfig {
         applicationId "ru.alexskvortsov.policlinic"
         minSdkVersion 21
@@ -24,6 +23,14 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
