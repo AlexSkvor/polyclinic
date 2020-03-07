@@ -37,18 +37,18 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
-    //AndroidX support lib
+    // AndroidX support lib
     implementation "androidx.appcompat:appcompat:$appcompatAndroidX"
     implementation "androidx.core:core-ktx:$androidXCore"
     implementation "com.google.android.material:material:$materialAndroidX"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutAndroidX"
 
-    //Navigation component
+    // Navigation component
     implementation "androidx.navigation:navigation-fragment:$navFragment"
     implementation "androidx.navigation:navigation-ui:$navUi"
     implementation "androidx.navigation:navigation-ui-ktx:$navUiKtx"
 
-    //RxJava2
+    // RxJava2
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
     implementation "com.jakewharton.rxrelay2:rxrelay:$rxrelayVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rxbindingsVersion"
@@ -56,22 +56,22 @@ dependencies {
     implementation "com.jakewharton.rxbinding2:rxbinding-design:$rxbindingsVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxbindingsVersion"
 
-    //Mosby
+    // Mosby
     implementation "com.hannesdorfmann.mosby3:mvi:$mosbyVers"
 
-    //Toothpick
+    // Toothpick
     implementation "com.github.stephanenicolas.toothpick:ktp:$toothpickVersion"
     kapt "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpickVersion"
 
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:$ankoVersion"
 
-    //    ThreetenABP
+    // Date-time lib
     implementation "com.jakewharton.threetenabp:threetenabp:$threetenABPVersion"
     //    Timber
     implementation "com.jakewharton.timber:timber:$timberVersion"
 
-    //json lib
+    // json lib
     implementation "com.google.code.gson:gson:$gson"
 
     // database
@@ -79,15 +79,15 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$roomDatabase"
     kapt "androidx.room:room-compiler:$roomDatabase"
 
-    //    Stetho
+    // Stetho
     implementation "com.facebook.stetho:stetho:$stethoVersion"
     implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 
-    //tests
+    // tests
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:2.27.0"
-    testApi "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
-    testApi "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
     androidTestImplementation 'org.mockito:mockito-android:2.24.5'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

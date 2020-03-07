@@ -1,10 +1,8 @@
-package ru.alexskvortsov.policlinic.data.storage.entities
+package ru.alexskvortsov.policlinic.data.storage.database.entities
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
-import androidx.room.PrimaryKey
-import java.util.*
+import androidx.room.*
+import org.threeten.bp.LocalDateTime
+import ru.alexskvortsov.policlinic.data.storage.database.Converters
 
 @Entity(
     tableName = "time_sheet",
@@ -18,10 +16,10 @@ import java.util.*
         )],
     indices = [Index(value = arrayOf("doctorId"), unique = false)]
 )
-data class TimeSheetEntity(
+@TypeConverters(Converters::class)
+data class WorkShiftEntity(
     @PrimaryKey val id: String,
     val doctorId: String,
-    val date: Date,
-    val startTime: Date, //min 6:00 max 22:00
-    val endTime: Date //min startTime + 1:00 max 23:00
+    val startTime: LocalDateTime, //min 6:00 max 22:00
+    val endTime: LocalDateTime //min startTime + 1:00 max 23:00
 )
