@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Policlinic</string>
+    <string name="app_name">Polyclinic</string>
+    <string name="stub">TODO</string>
+
+    <string name="please_await">Подождите, идет загрузка…</string>
 </resources>

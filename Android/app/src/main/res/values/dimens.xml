@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--font sizes-->
+    <dimen name="textSizeSuperSmall">8sp</dimen>
+    <dimen name="textSizeExtraSmall">10sp</dimen>
+    <dimen name="textSizeSmall">12sp</dimen>
+    <dimen name="textSizeNormal">14sp</dimen>
+    <dimen name="textSizeBig">16sp</dimen>
+    <dimen name="textSizeExtraBig">18sp</dimen>
+    <dimen name="textSizeLarge">20sp</dimen>
+    <dimen name="textSizeExtraLarge">22sp</dimen>
+    <dimen name="textSizeHuge">24sp</dimen>
+    <dimen name="textSizeExtraHuge">26sp</dimen>
+    <dimen name="textSizeSuperHuge">28sp</dimen>
+
+    <!--non-standard-->
+    <dimen name="auth_font_small">15sp</dimen>
+    <dimen name="superBigTextSize">40sp</dimen>
+    <dimen name="table_view_cell_height">47dp</dimen>
+    <dimen name="notFound3dTextSize">44sp</dimen>
+
+    <!--margin sizes-->
+    <dimen name="marginSuperSmall">2dp</dimen>
+    <dimen name="marginExtraSmall">4dp</dimen>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginNormal">12dp</dimen>
+    <dimen name="marginBig">16dp</dimen>
+    <dimen name="marginExtraBig">20dp</dimen>
+    <dimen name="marginSuperBig">24dp</dimen>
+    <dimen name="marginLarge">28dp</dimen>
+    <dimen name="marginExtraLarge">32dp</dimen>
+    <dimen name="marginSuperLarge">40dp</dimen>
+    <dimen name="marginHuge">48dp</dimen>
+    <dimen name="marginExtraHuge">56dp</dimen>
+    <dimen name="marginSuperHuge">64dp</dimen>
+
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">14sp</dimen>
+
+</resources>

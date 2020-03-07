@@ -47,6 +47,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$navFragment"
     implementation "androidx.navigation:navigation-ui:$navUi"
     implementation "androidx.navigation:navigation-ui-ktx:$navUiKtx"
+    implementation "ru.terrakok.cicerone:cicerone:$ciceroneVersion"
 
     // RxJava2
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"

@@ -13,6 +13,7 @@ buildscript {
     ext.navFragment = '2.3.0-alpha03'
     ext.navUi = '2.3.0-alpha03'
     ext.navUiKtx = '2.3.0-alpha03'
+    ext.ciceroneVersion = '5.0.0'
 
     //rx
     ext.rxjavaVersion = '2.2.8'
