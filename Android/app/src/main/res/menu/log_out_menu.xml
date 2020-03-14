@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/exitUser"
+        android:icon="@drawable/ic_unsuccess"
+        android:title="@string/exit_session" />
+
+    <item
+        android:id="@+id/exitMenu"
+        android:icon="@drawable/ic_unsuccess"
+        android:title="@string/exit" />
+
+</menu>

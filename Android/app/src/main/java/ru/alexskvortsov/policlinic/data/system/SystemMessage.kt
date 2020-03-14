@@ -5,10 +5,6 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import ru.alexskvortsov.policlinic.alsoPrintDebug
 
-/**
- * Created on 4/25/2019
- * @author YWeber
- */
 class SystemMessage {
     private val notifierRelay = PublishRelay.create<Message>()
 

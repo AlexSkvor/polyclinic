@@ -3,6 +3,9 @@ package ru.alexskvortsov.policlinic.data.storage.database.entities
 import androidx.room.*
 import org.threeten.bp.LocalDateTime
 import ru.alexskvortsov.policlinic.data.storage.database.Converters
+import ru.alexskvortsov.policlinic.domain.defaultIfNull
+import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+import java.util.*
 
 @Entity(
     tableName = "patients",
@@ -39,6 +42,19 @@ data class PatientEntity(
     val login: String,
     val password: String,
     val phoneNumber: String,
-    val userId: String
-) {
+    override val userId: String
+): UserSecondaryEntity {
+
+    override val fullName: String
+        get() = "$surname ${name.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("")}. " +
+                "${fathersName.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("")}."
+
+    override val initialSurnameLetter: String
+        get() = surname.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("").toString()
+
+    override val type: UserAuthInfo.UserType
+        get() = UserAuthInfo.UserType.PATIENT
+
+    override val realId: String
+        get() = id
 }

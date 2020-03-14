@@ -1,11 +1,9 @@
 package ru.alexskvortsov.policlinic.presentation.navigation
 
+import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+
 sealed class NavigationAction {
-    object SignIn : NavigationAction() {
-        object Authorization : NavigationAction()
-        data class SyncAction(val withBackStack: Boolean = true) : NavigationAction()
-        object SettingConnectionAction : NavigationAction()
-    }
+    data class SignIn(val type: UserAuthInfo.UserType): NavigationAction()
 
     object Back : NavigationAction()
 

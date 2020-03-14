@@ -2,9 +2,11 @@ package ru.alexskvortsov.policlinic.presentation.activity
 
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
+import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
 import ru.alexskvortsov.policlinic.domain.states.activity.AppPartialState
 import ru.alexskvortsov.policlinic.domain.states.activity.AppViewState
 import ru.alexskvortsov.policlinic.data.system.SystemMessage
+import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
 import ru.alexskvortsov.policlinic.presentation.base.BaseMviPresenter
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationAction
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationActionRelay
@@ -15,7 +17,8 @@ import javax.inject.Inject
 class AppPresenter @Inject constructor(
     private val systemMessage: SystemMessage,
     private val navigationRelay: NavigationActionRelay,
-    private val router: Router
+    private val router: Router,
+    private val prefs: AppPrefs
 ) : BaseMviPresenter<AppView, AppViewState>() {
     override fun bindIntents() {
         val initialState = AppViewState()
@@ -43,13 +46,18 @@ class AppPresenter @Inject constructor(
         actions.subscribe {
             when (it) {
                 is AppPartialState.LogOut -> logOut()
-                is AppPartialState.SignIn -> router.newRootScreen(Screens.AuthScreen)
+                is AppPartialState.SignIn -> when(it.type){
+                    UserAuthInfo.UserType.DOCTOR -> router.newRootScreen(Screens.DoctorScreen)
+                    UserAuthInfo.UserType.REGISTRY -> router.newRootScreen(Screens.RegistryScreen)
+                    UserAuthInfo.UserType.PATIENT -> router.newRootScreen(Screens.PatientScreen)
+                }
             }
         }.bind()
     }
 
     private fun logOut() {
-        router.newRootScreen(Screens.AuthScreen) //TODO clear prefs
+        prefs.logOut()
+        router.newRootScreen(Screens.AuthScreen)
     }
 
     private fun getActions(): Observable<AppPartialState> {
@@ -69,8 +77,8 @@ class AppPresenter @Inject constructor(
             .map { AppPartialState.Progress(it.progress) }
 
         val signIn = navigationRelay.get()
-            .filter { it is NavigationAction.SignIn }
-            .map { AppPartialState.SignIn }
+            .ofType(NavigationAction.SignIn::class.java)
+            .map { AppPartialState.SignIn(it.type) }
 
         val logOut = navigationRelay.get()
             .filter { it is NavigationAction.LogOut }

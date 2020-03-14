@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_navigation_home"
+        android:title="@string/startScreen" />
+    <item
+        android:id="@+id/tasksListFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_navigation_tasks"
+        android:title="@string/tasksScreen" />
+    <item
+        android:id="@+id/roomsListFragment"
+        android:enabled="true"
+        android:icon="@drawable/icon_navigation_rooms"
+        android:title="@string/roomsScreen" />
+-->
+</menu>

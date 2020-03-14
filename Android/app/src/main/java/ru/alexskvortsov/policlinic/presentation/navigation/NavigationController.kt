@@ -15,7 +15,7 @@ class NavigationController(private val navController: NavController) : NavContro
 
     override fun back() {
         if (navController.currentDestination?.id !in Screens.startScreensIds)
-            navController.popBackStack() //|| navController.currentDestination == navController.graph)){}
+            navController.popBackStack()
     }
 
     override fun backTo(screenId: Int?) {

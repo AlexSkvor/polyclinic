@@ -9,10 +9,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import ru.alexskvortsov.policlinic.R
 
-/**
- * Created on 4/25/2019
- * @author YWeber
- */
 class ProgressDialogFragment : AppCompatDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setStyle(STYLE_NO_FRAME, R.style.ProgressDialogTheme)

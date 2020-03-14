@@ -3,4 +3,40 @@
     <string name="stub">TODO</string>
 
     <string name="please_await">Подождите, идет загрузка…</string>
+    <string name="exit_session">СМЕНИТЬ ПОЛЬЗОВАТЕЛЯ</string>
+    <string name="exit">ВЫХОД</string>
+
+    <!--Auth-->
+    <string name="password_change_canceled">Пароль не изменен</string>
+    <string name="done_change_password">Пароль изменен</string>
+    <string name="done_new_password">Пароль назначен</string>
+    <string name="password_not_assigned">Пароль не назначен</string>
+    <string name="need_one_numeral">Требуется минимум одна цифра</string>
+    <string name="need_one_letter">Требуется минимум одна буква</string>
+    <string name="size_password_invalid">Пароль должен состоять не менее чем из 6 алфавитно-цифровых символов</string>
+
+    <string name="input_current_password">Введите пароль (минимум 6 буквенно-цифровых символов)</string>
+    <string name="change_local_password">ИЗМЕНИТЬ ПАРОЛЬ</string>
+    <string name="sing_in">Войти</string>
+
+    <string name="change_current_password">Введите действующий пароль (минимум 6 буквенно-цифровых символов)</string>
+    <string name="input_new_password">Введите новый пароль. Требуется не менее 6 буквенно-цифровых символов</string>
+    <string name="repeat_input_new_password">Повторите ввод нового пароля</string>
+    <string name="cancel_password">ОТМЕНИТЬ</string>
+    <string name="save_password">СОХРАНИТЬ ПАРОЛЬ</string>
+
+    <string name="invalid_password">Неверный пароль</string>
+    <string name="require_password">Не введен пароль</string>
+    <string name="password_invalidate_dublicate">Пароли не совпадают</string>
+
+    <string name="empty_list_holder_description">Отсутствуют зарегистрированные пользователи!</string>
+    <string name="search">Поиск</string>
+    <string name="users">Пользователи</string>
+    <string name="log_out">ВЫЙТИ</string>
+    <string name="authorization_description">Выберите свою учётную запись</string>
+    <string name="not_log_put">НЕ МОГУ ВОЙТИ</string>
+    <string name="last">Последние</string>
+    <string name="all">Все</string>
+
+
 </resources>

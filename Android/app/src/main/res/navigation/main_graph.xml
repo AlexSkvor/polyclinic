@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/authorizationFragment">
+
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.auth.AuthFragment"
+        android:label="AuthorizationFragment"
+        tools:layout="@layout/fragment_authorization" />
+
+    <fragment
+        android:id="@+id/rootFlowFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.RootFlowFragment"
+        android:label="RootFlowFragment"
+        tools:layout="@layout/fragment_flow_root" />
 
 </navigation>

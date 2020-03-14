@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/containerRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/logOutView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSearchView">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="start|bottom"
+            android:layout_marginStart="@dimen/marginSmall"
+            android:layout_marginBottom="@dimen/marginSmall"
+            android:contentDescription="@string/stub"
+            android:src="@drawable/wait_image_1024"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/logOutView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/listEmptyHolderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E0FFFCFC"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/marginExtraBig"
+                android:contentDescription="@string/stub"
+                android:src="@drawable/ic_empty_place_holder" />
+
+            <TextView
+                android:id="@+id/placeholderTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/marginExtraBig"
+                android:layout_marginTop="@dimen/marginExtraBig"
+                android:layout_marginEnd="@dimen/marginExtraBig"
+                android:gravity="center|start"
+                android:minLines="7"
+                android:text="@string/empty_list_holder_description"
+                android:textColor="#7D000000"
+                android:textSize="@dimen/textSizeExtraBig" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/usersRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/marginSmall"
+            android:background="#E5FFFCFC"
+            tools:listitem="@layout/item_authorization_user_holder" />
+
+    </FrameLayout>
+
+    <SearchView
+        android:id="@+id/userSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginBig"
+        android:layout_marginTop="@dimen/marginBig"
+        android:layout_marginEnd="@dimen/marginBig"
+        android:background="@color/searchViewColor"
+        android:gravity="center"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/search"
+        app:layout_constraintBottom_toTopOf="@+id/containerRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/descriptionView"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionView"
+        app:showDividers="beginning" />
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginBig"
+        android:layout_marginTop="@dimen/marginExtraBig"
+        android:text="@string/users"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeExtraHuge"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/logOutView"
+        style="@style/authTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginBig"
+        android:gravity="end"
+        android:text="@string/log_out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/doNotLogOutView"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/doNotLogOutView"
+        style="@style/authTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/marginBig"
+        android:gravity="end"
+        android:text="@string/not_log_put"
+        app:layout_constraintBottom_toBottomOf="@+id/logOutView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logOutView"
+        app:layout_constraintTop_toTopOf="@+id/logOutView" />
+
+    <TextView
+        android:id="@+id/descriptionView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginBig"
+        android:layout_marginEnd="@dimen/marginBig"
+        android:text="@string/authorization_description"
+        android:textSize="@dimen/textSizeBig"
+        app:layout_constraintBottom_toTopOf="@+id/userSearchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/titleView"
+        app:layout_constraintTop_toBottomOf="@+id/titleView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

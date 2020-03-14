@@ -1,8 +1,10 @@
 package ru.alexskvortsov.policlinic.domain.states.activity
 
+import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+
 sealed class AppPartialState(private val logMessage: String) {
 
-    object SignIn : AppPartialState("SignIn")
+    data class SignIn(val type: UserAuthInfo.UserType) : AppPartialState("SignIn $type")
     object LogOut : AppPartialState("LogOut")
 
     object Restore : AppPartialState("Restore")

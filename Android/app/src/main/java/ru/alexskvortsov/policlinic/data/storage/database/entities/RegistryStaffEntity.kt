@@ -1,9 +1,9 @@
 package ru.alexskvortsov.policlinic.data.storage.database.entities
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
+import ru.alexskvortsov.policlinic.domain.defaultIfNull
+import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+import java.util.*
 
 @Entity(
     tableName = "registry_staffs",
@@ -22,5 +22,19 @@ data class RegistryStaffEntity(
     val surname: String,
     val name: String,
     val fathersName: String,
-    val userId: String
-)
+    override val userId: String
+) : UserSecondaryEntity {
+
+    override val fullName: String
+        get() = "$surname ${name.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("")}. " +
+                "${fathersName.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("")}."
+
+    override val initialSurnameLetter: String
+        get() = surname.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("").toString()
+
+    override val type: UserAuthInfo.UserType
+        get() = UserAuthInfo.UserType.REGISTRY
+
+    override val realId: String
+        get() = id
+}

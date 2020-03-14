@@ -1,9 +1,11 @@
 package ru.alexskvortsov.policlinic.presentation.navigation
 
+import ru.alexskvortsov.policlinic.R
+
 class Screens {
     object AuthScreen : BundleScreen() {
         override val screenId: Int
-            get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+            get() = R.id.authorizationFragment
     }
 
     object PatientScreen : BundleScreen() {
@@ -16,12 +18,12 @@ class Screens {
             get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
     }
 
-    object RegistarScreen : BundleScreen() {
+    object RegistryScreen : BundleScreen() {
         override val screenId: Int
             get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
     }
 
     companion object {
-        val startScreensIds = listOf(AuthScreen.screenId, PatientScreen.screenId, DoctorScreen.screenId, RegistarScreen.screenId)
+        val startScreensIds = listOf(AuthScreen.screenId, PatientScreen.screenId, DoctorScreen.screenId, RegistryScreen.screenId)
     }
 }

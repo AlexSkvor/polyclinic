@@ -12,4 +12,23 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="AppTheme.DefaultEditText">
+        <item name="android:textSize">@dimen/textSizeBig</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="AppTheme.DefaultTextInputLayout">
+        <item name="android:textColor">@color/authHintSelect</item>
+        <item name="android:textSize">@dimen/auth_font_small</item>
+    </style>
+
+    <style name="authTextButton">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:padding">@dimen/login_corners_big</item>
+        <item name="android:layout_marginBottom">@dimen/marginSmall</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/auth_state_select_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
