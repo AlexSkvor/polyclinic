@@ -22,6 +22,7 @@ import ru.alexskvortsov.policlinic.presentation.activity.AppView
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationController
 import ru.alexskvortsov.policlinic.presentation.navigation.Navigator
 import ru.alexskvortsov.policlinic.toothpick.DI
+import ru.alexskvortsov.policlinic.ui.utils.ProgressDialogFragment
 import ru.terrakok.cicerone.NavigatorHolder
 import toothpick.Toothpick
 import javax.inject.Inject

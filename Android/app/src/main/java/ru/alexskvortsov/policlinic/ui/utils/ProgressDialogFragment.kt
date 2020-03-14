@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.ui
+package ru.alexskvortsov.policlinic.ui.utils
 
 import android.app.Dialog
 import android.os.Bundle
