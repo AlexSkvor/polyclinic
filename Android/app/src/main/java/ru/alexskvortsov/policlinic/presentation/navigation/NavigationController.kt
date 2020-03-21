@@ -14,7 +14,7 @@ class NavigationController(private val navController: NavController) : NavContro
     }
 
     override fun back() {
-        if (navController.currentDestination?.id !in Screens.startScreensIds)
+        if (navController.currentDestination?.id !in Screens.startScreensIds) //TODO not working
             navController.popBackStack()
     }
 
