@@ -37,6 +37,9 @@
     <string name="not_log_put">НЕ МОГУ ВОЙТИ</string>
     <string name="last">Последние</string>
     <string name="all">Все</string>
+    <string name="doctors">Врачи</string>
+    <string name="registry">Регистратура</string>
+    <string name="patients">Пациенты</string>
 
 
 </resources>

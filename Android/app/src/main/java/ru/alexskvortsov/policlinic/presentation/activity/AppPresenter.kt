@@ -3,6 +3,7 @@ package ru.alexskvortsov.policlinic.presentation.activity
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
+import ru.alexskvortsov.policlinic.data.storage.unpacking.UnpackingManager
 import ru.alexskvortsov.policlinic.domain.states.activity.AppPartialState
 import ru.alexskvortsov.policlinic.domain.states.activity.AppViewState
 import ru.alexskvortsov.policlinic.data.system.SystemMessage
@@ -12,11 +13,13 @@ import ru.alexskvortsov.policlinic.presentation.navigation.NavigationAction
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationActionRelay
 import ru.alexskvortsov.policlinic.presentation.navigation.Screens
 import ru.terrakok.cicerone.Router
+import timber.log.Timber
 import javax.inject.Inject
 
 class AppPresenter @Inject constructor(
     private val systemMessage: SystemMessage,
     private val navigationRelay: NavigationActionRelay,
+    private val unpackingManager: UnpackingManager,
     private val router: Router,
     private val prefs: AppPrefs
 ) : BaseMviPresenter<AppView, AppViewState>() {
@@ -61,6 +64,12 @@ class AppPresenter @Inject constructor(
     }
 
     private fun getActions(): Observable<AppPartialState> {
+
+        unpackingManager.unpackIfNeeded()
+            .doOnError { Timber.e(it) }
+            .subscribe()
+            .bind()
+
         val restore = intent(AppView::restore)
             .map { AppPartialState.Restore }
 

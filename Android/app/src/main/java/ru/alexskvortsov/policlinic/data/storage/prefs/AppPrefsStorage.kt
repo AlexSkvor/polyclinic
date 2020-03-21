@@ -43,6 +43,7 @@ class AppPrefsStorage @Inject constructor(private val context: Context) : AppPre
                 putString(LAST_USERS_SIGN_IN_LOCAL, innerStr)
             }
         }
+
     override var currentUser: UserSecondaryEntity
         get() {
             return object : UserSecondaryEntity {
@@ -78,7 +79,7 @@ class AppPrefsStorage @Inject constructor(private val context: Context) : AppPre
         }
 
     override fun logOut() {
-        //TODO("Not yet implemented")
+        localAuthorisation = false
     }
 
 }

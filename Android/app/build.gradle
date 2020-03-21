@@ -56,6 +56,7 @@ dependencies {
     implementation "com.jakewharton.rxbinding2:rxbinding:$rxbindingsVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding-design:$rxbindingsVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxbindingsVersion"
+    implementation 'com.jakewharton.rxbinding3:rxbinding-material:3.0.0'
 
     // Mosby
     implementation "com.hannesdorfmann.mosby3:mvi:$mosbyVers"

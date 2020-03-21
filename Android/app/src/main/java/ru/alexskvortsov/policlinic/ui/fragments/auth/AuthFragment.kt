@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jakewharton.rxbinding2.widget.RxSearchView
+import com.jakewharton.rxbinding3.material.selections
+import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_authorization.*
 import ru.alexskvortsov.policlinic.R
@@ -22,7 +24,7 @@ import toothpick.Scope
 import toothpick.config.Module
 import java.util.concurrent.TimeUnit
 
-class AuthFragment: BaseMviFragment<AuthorizationView, AuthorizationPresenter>(), AuthorizationView {
+class AuthFragment : BaseMviFragment<AuthorizationView, AuthorizationPresenter>(), AuthorizationView {
 
     override fun createPresenter(): AuthorizationPresenter = fromScope()
 
@@ -59,16 +61,19 @@ class AuthFragment: BaseMviFragment<AuthorizationView, AuthorizationPresenter>()
 
     override fun getUserList(): Observable<Unit> = Observable.just(Unit)
 
-    override fun userType(): Observable<UserAuthInfo.UserType> {
-        //TODO("Not yet implemented") разу после него дергать через поиск пользователей!
-        return Observable.just(UserAuthInfo.UserType.PATIENT)
-    }
+    override fun userType(): Observable<UserAuthInfo.UserType> =
+        userTypeTabs.selections()
+            .map {
+                when (it.position) {
+                    0 -> UserAuthInfo.UserType.DOCTOR
+                    1 -> UserAuthInfo.UserType.REGISTRY
+                    else -> UserAuthInfo.UserType.PATIENT
+                }
+            }.startWith(UserAuthInfo.UserType.PATIENT)
 
     override fun searchUser(): Observable<String> = RxSearchView.queryTextChanges(userSearchView)
         .map { it.toString() }
         .uiDebounce(300, TimeUnit.MILLISECONDS)
-
-    //TODO finish override fun logOutScreen(): Observable<Unit> = logOutView.clicks()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

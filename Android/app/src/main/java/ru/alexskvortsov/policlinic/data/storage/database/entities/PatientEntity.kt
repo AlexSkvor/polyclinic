@@ -37,10 +37,8 @@ data class PatientEntity(
     val fathersName: String,
     val gender: Boolean, //true -> men
     val berthDate: LocalDateTime,
-    val weight: Float,
-    val height: Float,
-    val login: String,
-    val password: String,
+    val weight: Int,
+    val height: Int,
     val phoneNumber: String,
     override val userId: String
 ): UserSecondaryEntity {

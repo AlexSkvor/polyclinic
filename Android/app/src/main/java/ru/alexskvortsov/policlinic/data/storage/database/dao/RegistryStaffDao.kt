@@ -11,4 +11,9 @@ interface RegistryStaffDao : BaseDao<RegistryStaffEntity> {
     @Query("SELECT * FROM registry_staffs")
     fun getAllRegistryList(): Single<List<RegistryStaffEntity>>
 
+    @Query("SELECT * FROM registry_staffs WHERE userId = :userId")
+    fun getByUserId(userId: String): Single<RegistryStaffEntity>
+
+    @Query("SELECT COUNT(*) FROM registry_staffs WHERE userId = :userId")
+    fun existsWithUserId(userId: String): Int
 }

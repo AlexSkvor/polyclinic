@@ -10,7 +10,7 @@ import toothpick.config.Module
 
 class AppModule: Module() {
     init {
-        bind(SystemMessage::class.java).singleton()
+        bind(SystemMessage::class.java).toInstance(SystemMessage())
 
         Timber.d("cicerone global router")
         val cicerone = Cicerone.create()

@@ -11,4 +11,9 @@ interface PatientDao: BaseDao<PatientEntity> {
     @Query("SELECT * FROM patients")
     fun getAllPatientsList(): Single<List<PatientEntity>>
 
+    @Query("SELECT * FROM patients WHERE userId = :userId")
+    fun getByUserId(userId: String): Single<PatientEntity>
+
+    @Query("SELECT COUNT(*) FROM patients WHERE userId = :userId")
+    fun existsWithUserId(userId: String): Int
 }

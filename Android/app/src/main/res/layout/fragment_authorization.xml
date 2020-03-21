@@ -69,23 +69,6 @@
 
     </FrameLayout>
 
-    <SearchView
-        android:id="@+id/userSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginBig"
-        android:layout_marginTop="@dimen/marginBig"
-        android:layout_marginEnd="@dimen/marginBig"
-        android:background="@color/searchViewColor"
-        android:gravity="center"
-        android:iconifiedByDefault="false"
-        android:queryHint="@string/search"
-        app:layout_constraintBottom_toTopOf="@+id/containerRecycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/descriptionView"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionView"
-        app:showDividers="beginning" />
-
     <TextView
         android:id="@+id/titleView"
         android:layout_width="0dp"
@@ -119,6 +102,7 @@
         android:id="@+id/doNotLogOutView"
         style="@style/authTextButton"
         android:layout_width="wrap_content"
+        android:visibility="invisible"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/marginBig"
         android:gravity="end"
@@ -136,11 +120,61 @@
         android:layout_marginEnd="@dimen/marginBig"
         android:text="@string/authorization_description"
         android:textSize="@dimen/textSizeBig"
-        app:layout_constraintBottom_toTopOf="@+id/userSearchView"
+        app:layout_constraintBottom_toTopOf="@+id/userTypeTabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/titleView"
         app:layout_constraintTop_toBottomOf="@+id/titleView" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/userTypeTabs"
+        style="@style/AppTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@id/userSearchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionView"
+        app:tabGravity="fill">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/doctorTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/doctors" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/registryTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registry" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/patientTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/patients" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <SearchView
+        android:id="@+id/userSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginBig"
+        android:layout_marginTop="@dimen/marginBig"
+        android:layout_marginEnd="@dimen/marginBig"
+        android:background="@color/searchViewColor"
+        android:gravity="center"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/search"
+        app:layout_constraintBottom_toTopOf="@+id/containerRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/descriptionView"
+        app:layout_constraintTop_toBottomOf="@+id/userTypeTabs"
+        app:showDividers="beginning" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

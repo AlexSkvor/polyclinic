@@ -12,6 +12,7 @@ import ru.alexskvortsov.policlinic.domain.flattenFlatMap
 import ru.alexskvortsov.policlinic.domain.flattenMap
 import ru.alexskvortsov.policlinic.domain.repository.AuthorizationRepository
 import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 class AuthorizationService @Inject constructor(
@@ -29,6 +30,30 @@ class AuthorizationService @Inject constructor(
             UserAuthInfo.UserType.REGISTRY -> registryStaffDao.getAllRegistryList().map { it as List<UserSecondaryEntity> }
             UserAuthInfo.UserType.PATIENT -> patientDao.getAllPatientsList().map { it as List<UserSecondaryEntity> }
         }.flattenMap {
+                UserAuthInfo(
+                    id = it.userId,
+                    fullName = it.fullName,
+                    initialSurnameLetter = it.initialSurnameLetter,
+                    password = "",
+                    type = it.type,
+                    realId = it.realId,
+                    userUseToApp = prefs.saveSignInUserId.indexOfFirst { id -> id == it.userId }
+                )
+            }.flattenFlatMap { user ->
+                userDao.getUserEntityById(user.id)
+                    .map { user.copy(fullName = if (it.login.isNotEmpty()) it.login else user.fullName, password = it.password) }.toObservable()
+            }.subscribeOn(scheduler.io())
+            .observeOn(scheduler.ui())
+
+    override fun getUser(userId: String): Single<UserAuthInfo> = Single.just(userId)
+        .flatMap {
+            when {
+                doctorDao.existsWithUserId(it) > 0 -> doctorDao.getByUserId(it)
+                registryStaffDao.existsWithUserId(it) > 0 -> registryStaffDao.getByUserId(it)
+                patientDao.existsWithUserId(it) > 0 -> patientDao.getByUserId(it)
+                else -> throw IllegalArgumentException("User With this userId: $it does nt exist!")
+            }
+        }.map {
             UserAuthInfo(
                 id = it.userId,
                 fullName = it.fullName,
@@ -38,22 +63,18 @@ class AuthorizationService @Inject constructor(
                 realId = it.realId,
                 userUseToApp = prefs.saveSignInUserId.indexOfFirst { id -> id == it.userId }
             )
-        }.flattenFlatMap { user ->
+        }.flatMap { user ->
             userDao.getUserEntityById(user.id)
-                .map { user.copy(fullName = if (it.login.isNotEmpty()) it.login else user.fullName, password = it.password) }.toObservable()
+                .map { user.copy(fullName = if (it.login.isNotEmpty()) it.login else user.fullName, password = it.password) }
         }.subscribeOn(scheduler.io())
-            .observeOn(scheduler.ui())
-
-    override fun getUser(userId: String): Single<UserAuthInfo> {
-        TODO("Not yet implemented")
-    }
+        .observeOn(scheduler.ui())
 
     override fun saveSingInUser(currentUserOwn: UserAuthInfo) {
         prefs.currentUser = currentUserOwn
     }
 
-    override fun setNewPassword(userId: String, newPassword: String): Single<UserAuthInfo> {
-        TODO("Not yet implemented")
-    }
+    override fun setNewPassword(userId: String, newPassword: String): Single<UserAuthInfo> =
+        userDao.updatePassword(userId, newPassword)
+            .andThen(getUser(userId))
 
 }
