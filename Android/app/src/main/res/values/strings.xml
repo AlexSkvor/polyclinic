@@ -40,6 +40,8 @@
     <string name="doctors">Врачи</string>
     <string name="registry">Регистратура</string>
     <string name="patients">Пациенты</string>
+    <string name="profile">Профиль</string>
+    <string name="record">Запись</string>
 
 
 </resources>

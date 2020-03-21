@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:logo="@drawable/app_logo"
+        app:logo="@drawable/ic_snake_small"
         app:title="@string/app_name"
         app:titleMarginStart="24dp"
         tools:title="@string/app_name">

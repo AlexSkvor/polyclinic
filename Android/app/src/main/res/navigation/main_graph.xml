@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_authorization" />
 
     <fragment
-        android:id="@+id/rootFlowFragment"
-        android:name="ru.alexskvortsov.policlinic.ui.fragments.RootFlowFragment"
-        android:label="RootFlowFragment"
-        tools:layout="@layout/fragment_flow_root" />
+        android:id="@+id/registryFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.registry.RegistryRootFragment"
+        android:label="RegistryRootFragment"
+        tools:layout="@layout/registry_root_fragment" />
 
 </navigation>
