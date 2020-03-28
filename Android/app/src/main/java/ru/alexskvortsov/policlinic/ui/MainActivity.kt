@@ -22,6 +22,7 @@ import ru.alexskvortsov.policlinic.presentation.activity.AppView
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationController
 import ru.alexskvortsov.policlinic.presentation.navigation.Navigator
 import ru.alexskvortsov.policlinic.toothpick.DI
+import ru.alexskvortsov.policlinic.ui.base.BackPressedHandler
 import ru.alexskvortsov.policlinic.ui.utils.ProgressDialogFragment
 import ru.terrakok.cicerone.NavigatorHolder
 import toothpick.Toothpick
@@ -132,5 +133,14 @@ class MainActivity : MviActivity<AppView, AppPresenter>(), AppView {
         navigationHolder.removeNavigator()
         restoringState = true
         super.onPause()
+    }
+
+    override fun onBackPressed() {
+        val fragment = mainNavHostFragment.childFragmentManager.fragments
+            .firstOrNull()
+                as? BackPressedHandler
+        if (fragment?.onBackPressed() != true) {
+            mainNavHostFragment.childFragmentManager.popBackStackImmediate()
+        }
     }
 }
