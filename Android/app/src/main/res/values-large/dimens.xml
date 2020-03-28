@@ -33,4 +33,8 @@
     <dimen name="marginExtraHuge">56dp</dimen>
     <dimen name="marginSuperHuge">64dp</dimen>
 
+    <!-- Progress dimens -->
+    <dimen name="progressBig">128dp</dimen>
+    <dimen name="progressSmall">64dp</dimen>
+
 </resources>

@@ -212,15 +212,16 @@ class AuthUserAdapter(
             }
             PasswordState.NOT_EQUAL -> {
                 currentTextInputLayout?.isErrorEnabled = true
-                currentTextInputLayout?.error = this.context.getString(R.string.password_invalidate_dublicate)
+                currentTextInputLayout?.error = this.context.getString(R.string.password_invalidate_duplicate)
             }
         }
 
     }
 
     private fun resetPasswordData(passwordEditText: EditText? = null, passwordInputLayout: TextInputLayout? = null) {
-        passwordInputLayout?.isPasswordVisibilityToggleEnabled = false
-        passwordInputLayout?.isPasswordVisibilityToggleEnabled = true
+        passwordInputLayout?.endIconMode = TextInputLayout.END_ICON_NONE
+        passwordInputLayout?.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
+        passwordInputLayout?.setEndIconActivated(false)
         passwordEditText?.setText("")
         passwordInputLayout?.error = null
         passwordInputLayout?.isErrorEnabled = false

@@ -27,7 +27,7 @@
 
     <string name="invalid_password">Неверный пароль</string>
     <string name="require_password">Не введен пароль</string>
-    <string name="password_invalidate_dublicate">Пароли не совпадают</string>
+    <string name="password_invalidate_duplicate">Пароли не совпадают</string>
 
     <string name="empty_list_holder_description">Отсутствуют зарегистрированные пользователи!</string>
     <string name="search">Поиск</string>
@@ -43,5 +43,19 @@
     <string name="profile">Профиль</string>
     <string name="record">Запись</string>
 
+    <!-- Common -->
+    <string name="errorHappened">Произошла ошибка"</string>
+    <string name="titleProfile">Ваш профиль</string>
+    <string name="cancel">ОТМЕНИТЬ</string>
+    <string name="save">СОХРАНИТЬ</string>
+
+    <!-- Registry -->
+    <string name="registryPersonSaved">Профиль обновлён!</string>
+    <string name="hintSurname">Введите фамилию</string>
+    <string name="hintName">Введите имя</string>
+    <string name="hintFathersName">Введите отчество</string>
+    <string name="hintLogin">Введите логин</string>
+    <string name="fieldMustNotBeEmpty">Поле не должно быть пустым!</string>
+    <string name="loginIsNotUnique">Такой логин существует!</string>
 
 </resources>

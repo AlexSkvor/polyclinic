@@ -41,4 +41,7 @@
     <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">14sp</dimen>
 
+    <!-- Progress dimens -->
+    <dimen name="progressBig">32dp</dimen>
+    <dimen name="progressSmall">16dp</dimen>
 </resources>

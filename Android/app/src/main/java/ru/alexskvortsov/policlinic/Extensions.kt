@@ -8,11 +8,16 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import timber.log.Timber
@@ -74,7 +79,8 @@ fun View.isKeyboardOpen(dp: Float = 100f): Boolean {
     val visibleBounds = Rect()
     this.rootView.getWindowVisibleDisplayFrame(visibleBounds)
     val heightDiff = rootView.height - visibleBounds.height()
-    val marginOfError = this.context.convertDpToPx(dp).roundToInt() //на эмуляторе получается 200dp, на планшете 100dp, оба отрабатывают проверку корректно, может не правильно работать с другими устройствами
+    val marginOfError = this.context.convertDpToPx(dp)
+        .roundToInt() //на эмуляторе получается 200dp, на планшете 100dp, оба отрабатывают проверку корректно, может не правильно работать с другими устройствами
     return heightDiff > marginOfError
 }
 
@@ -85,6 +91,26 @@ fun Context.convertDpToPx(dp: Float): Float {
         this.resources.displayMetrics
     )
 }
+
+fun Fragment.getColor(@ColorRes colorId: Int): Int {
+    return ContextCompat.getColor(requireContext(), colorId)
+}
+
+fun TextView.setTextIfNotEqual(text: CharSequence) {
+    if (text.toString() != this.text.toString()) {
+        this.text = text
+    }
+}
+
+val TextInputEditText.inputLayout: TextInputLayout?
+    get() {
+        var mParent = parent
+        while (mParent is View) {
+            if (mParent is TextInputLayout) return mParent
+            mParent = (mParent as View).parent
+        }
+        return null
+    }
 
 fun Fragment.isKeyboardOpen(): Boolean {
     val visibleBounds = Rect()

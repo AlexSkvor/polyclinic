@@ -2,19 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/registry_graph"
-    app:startDestination="@id/registryRecordingFragment">
-
-    <fragment
-        android:id="@+id/registryRecordingFragment"
-        android:name="ru.alexskvortsov.policlinic.ui.fragments.registry.RegistryRecordingFragment"
-        android:label="RegistryRecordingFragment"
-        tools:layout="@layout/registry_recording_fragment" />
+    app:startDestination="@id/registryRecordingFragment"
+    android:id="@+id/registry_graph">
 
     <fragment
         android:id="@+id/registryProfileFragment"
         android:name="ru.alexskvortsov.policlinic.ui.fragments.registry.RegistryProfileFragment"
         android:label="RegistryProfileFragment"
         tools:layout="@layout/registry_profile_fragment" />
+
+    <fragment
+        android:id="@+id/registryRecordingFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.registry.RegistryRecordingFragment"
+        android:label="RegistryRecordingFragment"
+        tools:layout="@layout/registry_recording_fragment" />
 
 </navigation>

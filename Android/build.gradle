@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlinVersion = '1.3.61'
+    ext.kotlinVersion = '1.3.70'
 
     //androidx
     ext.appcompatAndroidX = '1.1.0'
@@ -10,9 +10,9 @@ buildscript {
     ext.materialAndroidX = '1.1.0'
 
     // navigation component
-    ext.navFragment = '2.3.0-alpha03'
-    ext.navUi = '2.3.0-alpha03'
-    ext.navUiKtx = '2.3.0-alpha03'
+    ext.navFragment = '2.0.0'
+    ext.navUi = '2.0.0'
+    ext.navUiKtx = '2.0.0'
     ext.ciceroneVersion = '5.0.0'
 
     //rx

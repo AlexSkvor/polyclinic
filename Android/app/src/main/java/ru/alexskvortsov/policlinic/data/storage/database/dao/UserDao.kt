@@ -17,4 +17,10 @@ interface UserDao : BaseDao<UserEntity> {
 
     @Query("SELECT COUNT(*) FROM users")
     fun count(): Single<Int>
+
+    @Query("SELECT COUNT(*) FROM users WHERE login = :login AND NOT id = :notCountId")
+    fun countSameLogins(login: String, notCountId: String): Single<Int>
+
+    @Query("UPDATE users SET login = :login WHERE id = :id")
+    fun updateLogin(login: String, id: String): Completable
 }

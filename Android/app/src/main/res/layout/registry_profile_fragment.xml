@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleRegistryProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginBig"
+            android:layout_marginTop="@dimen/marginBig"
+            android:text="@string/titleProfile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/surnameLayoutRegistryProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintSurname"
+            app:layout_constraintEnd_toEndOf="@id/titleRegistryProfile"
+            app:layout_constraintStart_toStartOf="@id/titleRegistryProfile"
+            app:layout_constraintTop_toBottomOf="@id/titleRegistryProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/surnameRegistryProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="surname" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameLayoutRegistryProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintName"
+            app:layout_constraintEnd_toEndOf="@id/surnameLayoutRegistryProfile"
+            app:layout_constraintStart_toStartOf="@id/surnameLayoutRegistryProfile"
+            app:layout_constraintTop_toBottomOf="@id/surnameLayoutRegistryProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameRegistryProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fathersNameLayoutRegistryProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintFathersName"
+            app:layout_constraintEnd_toEndOf="@id/nameLayoutRegistryProfile"
+            app:layout_constraintStart_toStartOf="@id/nameLayoutRegistryProfile"
+            app:layout_constraintTop_toBottomOf="@id/nameLayoutRegistryProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fathersNameRegistryProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="fathersName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loginLayoutRegistryProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintLogin"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutRegistryProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutRegistryProfile"
+            app:layout_constraintTop_toBottomOf="@id/fathersNameLayoutRegistryProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginRegistryProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="login" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/cancelButtonRegistryProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginExtraLarge"
+            android:text="@string/cancel"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginLayoutRegistryProfile"
+            app:layout_constraintVertical_bias="1" />
+
+        <TextView
+            android:id="@+id/saveButtonRegistryProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginExtraLarge"
+            android:text="@string/save"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginLayoutRegistryProfile"
+            app:layout_constraintVertical_bias="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
