@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
@@ -96,9 +95,10 @@ fun Fragment.getColor(@ColorRes colorId: Int): Int {
     return ContextCompat.getColor(requireContext(), colorId)
 }
 
-fun TextView.setTextIfNotEqual(text: CharSequence) {
+fun EditText.setTextIfNotEqual(text: CharSequence) {
     if (text.toString() != this.text.toString()) {
-        this.text = text
+        this.setText(text)
+        if (text.isNotEmpty()) this.setSelection(text.length)
     }
 }
 
