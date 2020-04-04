@@ -41,6 +41,7 @@
     <string name="registry">Регистратура</string>
     <string name="patients">Пациенты</string>
     <string name="profile">Профиль</string>
+    <string name="appointment">Приём</string>
     <string name="record">Запись</string>
 
     <!-- Common -->

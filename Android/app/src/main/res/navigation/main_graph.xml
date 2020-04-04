@@ -17,4 +17,10 @@
         android:label="RegistryRootFragment"
         tools:layout="@layout/registry_root_fragment" />
 
+    <fragment
+        android:id="@+id/doctorsFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.doctors.DoctorRootFragment"
+        android:label="DoctorRootFragment"
+        tools:layout="@layout/doctor_root_fragment" />
+
 </navigation>

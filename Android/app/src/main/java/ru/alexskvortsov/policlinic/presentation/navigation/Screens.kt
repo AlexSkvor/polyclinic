@@ -15,7 +15,7 @@ class Screens {
 
     object DoctorScreen : BundleScreen() {
         override val screenId: Int
-            get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+            get() = R.id.doctorsFragment
     }
 
     object RegistryScreen : BundleScreen() {
