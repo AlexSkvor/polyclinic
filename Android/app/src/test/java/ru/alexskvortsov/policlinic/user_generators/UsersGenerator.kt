@@ -11,6 +11,14 @@ class UsersGenerator {
         generateDoctors(num)
         generatePatients(num * 10)
         generateRegistry(num)
+        generateCompetitions()
+    }
+
+    private fun generateCompetitions() {
+        val list = CompetitionsGenerator().generateCompetitions()
+        val file = File("competence.json")
+        file.createNewFile()
+        file.writeText(gson.toJson(list))
     }
 
     private fun generateDoctors(num: Int) {

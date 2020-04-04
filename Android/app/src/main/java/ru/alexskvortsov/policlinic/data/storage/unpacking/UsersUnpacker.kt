@@ -5,14 +5,8 @@ import androidx.annotation.RawRes
 import com.google.gson.Gson
 import io.reactivex.Completable
 import ru.alexskvortsov.policlinic.R
-import ru.alexskvortsov.policlinic.data.storage.database.dao.DoctorDao
-import ru.alexskvortsov.policlinic.data.storage.database.dao.PatientDao
-import ru.alexskvortsov.policlinic.data.storage.database.dao.RegistryStaffDao
-import ru.alexskvortsov.policlinic.data.storage.database.dao.UserDao
-import ru.alexskvortsov.policlinic.data.storage.database.entities.DoctorEntity
-import ru.alexskvortsov.policlinic.data.storage.database.entities.PatientEntity
-import ru.alexskvortsov.policlinic.data.storage.database.entities.RegistryStaffEntity
-import ru.alexskvortsov.policlinic.data.storage.database.entities.UserEntity
+import ru.alexskvortsov.policlinic.data.storage.database.dao.*
+import ru.alexskvortsov.policlinic.data.storage.database.entities.*
 import ru.alexskvortsov.policlinic.toothpick.DefaultFilesDir
 import java.io.File
 import javax.inject.Inject
@@ -23,6 +17,7 @@ class UsersUnpacker @Inject constructor(
     private val registryDao: RegistryStaffDao,
     private val patientDao: PatientDao,
     private val context: Context,
+    private val competenceDao: CompetenceDao,
     private val gson: Gson,
     @DefaultFilesDir private val filesDir: String
 ) {
@@ -31,6 +26,13 @@ class UsersUnpacker @Inject constructor(
         unpackDoctors()
         unpackPatients()
         unpackRegistry()
+        unpackCompetence()
+    }
+
+    private fun unpackCompetence() {
+        val text = getTextForRawResourceFile(R.raw.competence)
+        val list = gson.fromJson(text, Array<CompetenceEntity>::class.java).toList()
+        competenceDao.insertAll(list)
     }
 
     private fun unpackDoctors() {
