@@ -8,9 +8,9 @@ import ru.alexskvortsov.policlinic.data.storage.database.Converters
     tableName = "consultations_in_plan",
     foreignKeys = [
         ForeignKey(
-            entity = WorkShiftEntity::class,
+            entity = DoctorEntity::class,
             parentColumns = ["id"],
-            childColumns = ["workShiftId"],
+            childColumns = ["doctorId"],
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
         ),
@@ -28,14 +28,14 @@ import ru.alexskvortsov.policlinic.data.storage.database.Converters
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
         )],
-    indices = [Index(value = ["workShiftId"], unique = false),
+    indices = [Index(value = ["doctorId"], unique = false),
         Index(value = ["userAskedId"], unique = false),
         Index(value = ["patientId"], unique = false)]
 )
 @TypeConverters(Converters::class)
 data class ConsultationEntity(
     @PrimaryKey val id: String,
-    val workShiftId: String,
+    val doctorId: String,
     val userAskedId: String,
     val patientId: String,
     val startTimePlan: LocalDateTime,

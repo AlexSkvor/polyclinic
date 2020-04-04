@@ -10,7 +10,6 @@ class DataBaseModule : Module() {
         bind(AppDatabase::class.java).toProvider(AppDatabaseProvider::class.java).singleton()
         bind(DoctorDao::class.java).toProvider(DoctorDaoProvider::class.java).singleton()
         bind(PatientDao::class.java).toProvider(PatientDaoProvider::class.java).singleton()
-        bind(WorkShiftDao::class.java).toProvider(WorkShiftDaoProvider::class.java).singleton()
         bind(UserDao::class.java).toProvider(UserDaoProvider::class.java).singleton()
         bind(ProcedureDao::class.java).toProvider(ProcedureDaoProvider::class.java).singleton()
         bind(CompetenceDao::class.java).toProvider(CompetenceDaoProvider::class.java).singleton()

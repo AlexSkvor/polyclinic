@@ -3,11 +3,11 @@ package ru.alexskvortsov.policlinic.presentation.auth
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 import ru.alexskvortsov.policlinic.R
-import ru.alexskvortsov.policlinic.alsoPrintDebug
 import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
 import ru.alexskvortsov.policlinic.data.system.ResourceManager
 import ru.alexskvortsov.policlinic.data.system.SystemMessage
 import ru.alexskvortsov.policlinic.domain.states.auth.*
+import ru.alexskvortsov.policlinic.presentation.activity.UnpackingNotifier
 import ru.alexskvortsov.policlinic.presentation.base.BaseMviPresenter
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationAction
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationActionRelay
@@ -19,7 +19,8 @@ class AuthorizationPresenter @Inject constructor(
     private val appPrefsProvider: AppPrefs,
     private val systemMessage: SystemMessage,
     private val resourceManager: ResourceManager,
-    private val actionRouter: NavigationActionRelay
+    private val actionRouter: NavigationActionRelay,
+    private val unpackingNotifier: UnpackingNotifier
 ) : BaseMviPresenter<AuthorizationView, AuthorizationViewState>() {
 
     override fun bindIntents() {
@@ -102,6 +103,7 @@ class AuthorizationPresenter @Inject constructor(
 
     private fun getActions(): Observable<AuthorizationPartialState> {
         val intentFirstListUser = intent(AuthorizationView::getUserList)
+            .mergeWith(unpackingNotifier.unpackResult())
             .switchMapWithLastState { interactor.getUsers(userListType) }
 
         val intentLoginUser = intent(AuthorizationView::tryLogin)

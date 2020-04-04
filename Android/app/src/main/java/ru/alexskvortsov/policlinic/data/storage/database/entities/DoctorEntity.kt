@@ -25,7 +25,7 @@ import java.util.*
 @TypeConverters(Converters::class)
 data class DoctorEntity(
     @PrimaryKey val id: String,
-    val professionName: String,
+    val skillLevel: String,
     val workExperienceYears: Int,
     val educationMainDocumentRef: String,
     val surname: String,

@@ -10,7 +10,6 @@ import ru.alexskvortsov.policlinic.data.storage.database.entities.*
         DoctorEntity::class,
         PatientEntity::class,
         RegistryStaffEntity::class,
-        WorkShiftEntity::class,
         UserEntity::class,
         ConsultationEntity::class,
         FactConsultationEntity::class,
@@ -25,7 +24,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun doctorDao(): DoctorDao
     abstract fun patientDao(): PatientDao
     abstract fun registryStaffDao(): RegistryStaffDao
-    abstract fun workShiftDao(): WorkShiftDao
     abstract fun userDao(): UserDao
     abstract fun consultationDao(): ConsultationDao
     abstract fun factConsultationDao(): FactConsultationDao

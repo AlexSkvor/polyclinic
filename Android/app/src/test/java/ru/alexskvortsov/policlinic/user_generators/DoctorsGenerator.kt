@@ -33,7 +33,7 @@ class DoctorsGenerator {
     private fun newDoctor(gender: Boolean): DoctorEntity {
         return DoctorEntity(
             id = uuid,
-            professionName = professionsList.random(),
+            skillLevel = professionsList.random(),
             workExperienceYears = Random.nextInt(1, 10),
             educationMainDocumentRef = "",
             surname = getSurname(gender),

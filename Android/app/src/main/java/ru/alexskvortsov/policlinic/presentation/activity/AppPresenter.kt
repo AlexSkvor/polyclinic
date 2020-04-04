@@ -21,7 +21,8 @@ class AppPresenter @Inject constructor(
     private val navigationRelay: NavigationActionRelay,
     private val unpackingManager: UnpackingManager,
     private val router: Router,
-    private val prefs: AppPrefs
+    private val prefs: AppPrefs,
+    private val unpackingNotifier: UnpackingNotifier
 ) : BaseMviPresenter<AppView, AppViewState>() {
     override fun bindIntents() {
         val initialState = AppViewState()
@@ -49,7 +50,7 @@ class AppPresenter @Inject constructor(
         actions.subscribe {
             when (it) {
                 is AppPartialState.LogOut -> logOut()
-                is AppPartialState.SignIn -> when(it.type){
+                is AppPartialState.SignIn -> when (it.type) {
                     UserAuthInfo.UserType.DOCTOR -> router.newRootScreen(Screens.DoctorScreen)
                     UserAuthInfo.UserType.REGISTRY -> router.newRootScreen(Screens.RegistryScreen)
                     UserAuthInfo.UserType.PATIENT -> router.newRootScreen(Screens.PatientScreen)
@@ -67,7 +68,9 @@ class AppPresenter @Inject constructor(
 
         unpackingManager.unpackIfNeeded()
             .doOnError { Timber.e(it) }
-            .subscribe()
+            .subscribe {
+                unpackingNotifier.notifyUnpacked()
+            }
             .bind()
 
         val restore = intent(AppView::restore)
