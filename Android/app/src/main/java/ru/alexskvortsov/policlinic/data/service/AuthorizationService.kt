@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.data.storage.service
+package ru.alexskvortsov.policlinic.data.service
 
 import io.reactivex.Single
 import ru.alexskvortsov.policlinic.data.storage.database.dao.DoctorDao

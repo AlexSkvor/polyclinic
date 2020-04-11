@@ -9,16 +9,29 @@ import io.reactivex.Observable.just
 import kotlinx.android.synthetic.main.doctor_profile_fragment.*
 import kotlinx.android.synthetic.main.item_doctor_competence_field.view.*
 import ru.alexskvortsov.policlinic.*
+import ru.alexskvortsov.policlinic.data.service.DoctorProfileService
 import ru.alexskvortsov.policlinic.data.storage.database.entities.CompetenceEntity
+import ru.alexskvortsov.policlinic.domain.repository.DoctorProfileRepository
 import ru.alexskvortsov.policlinic.domain.states.doctor.DoctorProfileViewState
 import ru.alexskvortsov.policlinic.presentation.doctor.DoctorProfilePresenter
 import ru.alexskvortsov.policlinic.presentation.doctor.DoctorProfileView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment
+import toothpick.Scope
+import toothpick.config.Module
 import java.util.concurrent.TimeUnit
 
 class DoctorProfileFragment : BaseMviFragment<DoctorProfileView, DoctorProfilePresenter>(), DoctorProfileView {
     override val layoutRes: Int
         get() = R.layout.doctor_profile_fragment
+
+    override fun installModules(scope: Scope) {
+        super.installModules(scope)
+        scope.installModules(object : Module() {
+            init {
+                bind(DoctorProfileRepository::class.java).to(DoctorProfileService::class.java)
+            }
+        })
+    }
 
     override fun createPresenter(): DoctorProfilePresenter = fromScope()
 
@@ -51,7 +64,7 @@ class DoctorProfileFragment : BaseMviFragment<DoctorProfileView, DoctorProfilePr
         renderEditTextField(state.changedDoctor.surname, surnameDoctorProfile)
         renderEditTextField(state.changedDoctor.name, nameDoctorProfile)
         renderEditTextField(state.changedDoctor.fathersName, fathersNameDoctorProfile)
-        renderEditTextField(state.changedDoctor.phone, phoneDoctorProfile)
+        renderEditTextField(state.changedDoctor.phone, phoneDoctorProfile)//TODO validation
         renderEditTextField(state.changedDoctor.skillLevel, skillLevelDoctorProfile)
         renderEditTextField(state.changedDoctor.berthDate, berthDateDoctorProfile)
         renderEditTextField(state.changedDoctor.workExperienceYears.toString(), workExperienceYearsDoctorProfile)

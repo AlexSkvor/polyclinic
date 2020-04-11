@@ -7,7 +7,7 @@ import io.reactivex.Observable
 import io.reactivex.Observable.just
 import kotlinx.android.synthetic.main.registry_profile_fragment.*
 import ru.alexskvortsov.policlinic.*
-import ru.alexskvortsov.policlinic.data.storage.service.RegistryProfileService
+import ru.alexskvortsov.policlinic.data.service.RegistryProfileService
 import ru.alexskvortsov.policlinic.domain.repository.RegistryProfileRepository
 import ru.alexskvortsov.policlinic.domain.states.registry.profile.RegistryProfileViewState
 import ru.alexskvortsov.policlinic.presentation.registry.RegistryProfilePresenter

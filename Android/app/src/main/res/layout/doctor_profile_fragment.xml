@@ -227,7 +227,7 @@
             android:textSize="@dimen/textSizeLarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/loginLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/berthDateLayoutDoctorProfile"
             app:layout_constraintVertical_bias="1" />
 
         <TextView
@@ -240,7 +240,7 @@
             android:textSize="@dimen/textSizeLarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/loginLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/berthDateLayoutDoctorProfile"
             app:layout_constraintVertical_bias="1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

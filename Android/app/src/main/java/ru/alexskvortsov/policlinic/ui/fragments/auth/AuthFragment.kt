@@ -5,11 +5,10 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jakewharton.rxbinding2.widget.RxSearchView
 import com.jakewharton.rxbinding3.material.selections
-import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_authorization.*
 import ru.alexskvortsov.policlinic.R
-import ru.alexskvortsov.policlinic.data.storage.service.AuthorizationService
+import ru.alexskvortsov.policlinic.data.service.AuthorizationService
 import ru.alexskvortsov.policlinic.domain.repository.AuthorizationRepository
 import ru.alexskvortsov.policlinic.domain.states.auth.*
 import ru.alexskvortsov.policlinic.domain.utils.RecyclerItem

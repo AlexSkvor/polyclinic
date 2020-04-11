@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.data.storage.service
+package ru.alexskvortsov.policlinic.data.service
 
 import io.reactivex.Completable
 import io.reactivex.Observable
