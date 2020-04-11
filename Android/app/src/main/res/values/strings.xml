@@ -51,7 +51,7 @@
     <string name="save">СОХРАНИТЬ</string>
 
     <!-- Registry -->
-    <string name="registryPersonSaved">Профиль обновлён!</string>
+    <string name="profileUpdated">Профиль обновлён!</string>
     <string name="hintSurname">Введите фамилию</string>
     <string name="hintName">Введите имя</string>
     <string name="hintFathersName">Введите отчество</string>
@@ -59,4 +59,10 @@
     <string name="fieldMustNotBeEmpty">Поле не должно быть пустым!</string>
     <string name="loginIsNotUnique">Такой логин существует!</string>
 
+    <!-- Doctor -->
+    <string name="skillLevelHint">Должность</string>
+    <string name="workExperienceYearsHint">Опыт работы</string>
+    <string name="berthDateHint">Дата рождения</string>
+    <string name="phoneHint">Номер телефона</string>
+    <string name="qualifications">Квалификации:</string>
 </resources>

@@ -47,7 +47,7 @@ class RegistryProfilePresenter @Inject constructor(
                     systemMessage.send(resourceManager.getString(R.string.errorHappened))
                     navigation.pushAction(NavigationAction.Back)
                 }
-                RegistryProfilePartialState.PersonSaved -> systemMessage.send(resourceManager.getString(R.string.registryPersonSaved))
+                RegistryProfilePartialState.PersonSaved -> systemMessage.send(resourceManager.getString(R.string.profileUpdated))
             }
         }.bind()
     }

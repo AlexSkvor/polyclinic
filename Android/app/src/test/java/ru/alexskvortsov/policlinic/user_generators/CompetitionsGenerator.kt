@@ -25,8 +25,7 @@ class CompetitionsGenerator {
                 CompetenceEntity(
                     id = uuid,
                     name = it.first,
-                    description = it.second,
-                    minutesForConsultation = 30
+                    description = it.second
                 )
             }
     }

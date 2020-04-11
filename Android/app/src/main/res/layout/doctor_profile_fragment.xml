@@ -1,5 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginBig"
+            android:layout_marginTop="@dimen/marginBig"
+            android:text="@string/titleProfile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/surnameLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintSurname"
+            app:layout_constraintEnd_toEndOf="@id/titleDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/titleDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/titleDoctorProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/surnameDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="surname" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintName"
+            app:layout_constraintEnd_toEndOf="@id/surnameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/surnameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/surnameLayoutDoctorProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fathersNameLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintFathersName"
+            app:layout_constraintEnd_toEndOf="@id/nameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/nameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/nameLayoutDoctorProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fathersNameDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="fathersName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/loginLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintLogin"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/fathersNameLayoutDoctorProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="login" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/phoneHint"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/loginLayoutDoctorProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="+79052469003" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/competenceTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:drawableEnd="@drawable/ic_plus_primary_24dp"
+            android:paddingEnd="@dimen/marginExtraLarge"
+            android:text="@string/qualifications"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeExtraBig"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/phoneLayoutDoctorProfile"
+            tools:ignore="RtlSymmetry" />
+
+        <LinearLayout
+            android:id="@+id/competenceList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/competenceTitle">
+
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/skillLevelLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/skillLevelHint"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/competenceList">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/skillLevelDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                tools:text="Старший врач" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/workExperienceYearsLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/workExperienceYearsHint"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/skillLevelLayoutDoctorProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/workExperienceYearsDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                tools:text="1 Год" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/berthDateLayoutDoctorProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/berthDateHint"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutDoctorProfile"
+            app:layout_constraintTop_toBottomOf="@id/workExperienceYearsLayoutDoctorProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/berthDateDoctorProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/black"
+                tools:text="29.12.1995" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/cancelButtonDoctorProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginExtraLarge"
+            android:text="@string/cancel"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginLayoutDoctorProfile"
+            app:layout_constraintVertical_bias="1" />
+
+        <TextView
+            android:id="@+id/saveButtonDoctorProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginExtraLarge"
+            android:text="@string/save"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loginLayoutDoctorProfile"
+            app:layout_constraintVertical_bias="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

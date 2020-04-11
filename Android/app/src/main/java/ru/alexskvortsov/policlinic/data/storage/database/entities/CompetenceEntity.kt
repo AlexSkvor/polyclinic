@@ -7,6 +7,5 @@ import androidx.room.PrimaryKey
 data class CompetenceEntity(
     @PrimaryKey val id: String,
     val name: String,
-    val description: String,
-    val minutesForConsultation: Int
+    val description: String
 )
