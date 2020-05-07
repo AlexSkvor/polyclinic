@@ -18,6 +18,7 @@ sealed class DoctorProfilePartialState(private val log: String) {
     data class NewLogin(val login: String) : DoctorProfilePartialState("NewLogin $login")
     data class NewPhone(val phone: String) : DoctorProfilePartialState("NewPhone $phone")
 
+    data class CompetenceLoaded(val list: List<CompetenceEntity>): DoctorProfilePartialState("CompetenceLoaded $list")
     data class CompetencesChange(val list: List<CompetenceEntity>): DoctorProfilePartialState("CompetencesChange $list")
 
     override fun toString(): String = log

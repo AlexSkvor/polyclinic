@@ -1,9 +1,11 @@
 package ru.alexskvortsov.policlinic.ui.fragments.doctors
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import com.google.android.material.textfield.TextInputEditText
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.widget.textChanges
+import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import io.reactivex.Observable.just
 import kotlinx.android.synthetic.main.doctor_profile_fragment.*
@@ -47,10 +49,8 @@ class DoctorProfileFragment : BaseMviFragment<DoctorProfileView, DoctorProfilePr
 
     override fun phoneChangedIntent(): Observable<String> = phoneDoctorProfile.changes()
 
-    override fun competencesChangeIntent(): Observable<List<CompetenceEntity>> {
-        //TODO("Not yet implemented")
-        return Observable.empty()
-    }
+    private val competenceAddingRelay = PublishRelay.create<List<CompetenceEntity>>()
+    override fun competencesChangeIntent(): Observable<List<CompetenceEntity>> = competenceAddingRelay.hide()
 
     override fun saveIntent(): Observable<Unit> = saveButtonDoctorProfile.clicks()
 
@@ -69,7 +69,19 @@ class DoctorProfileFragment : BaseMviFragment<DoctorProfileView, DoctorProfilePr
         renderEditTextField(state.changedDoctor.berthDate, berthDateDoctorProfile)
         renderEditTextField(state.changedDoctor.workExperienceYears.toString(), workExperienceYearsDoctorProfile)
         renderCompetenceList(state.changedDoctor.competenceList)
-        //TODO competenceList changes
+        competenceTitle.setOnClickListener {
+            dialogCompetences(state.possibleCompetences - state.changedDoctor.competenceList, state.changedDoctor.competenceList)
+        }
+    }
+
+    private fun dialogCompetences(competences: List<CompetenceEntity>, currentCompetences: List<CompetenceEntity>) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(R.string.chooseCompetence)
+        builder.setItems(competences.map { it.name }.toTypedArray()) { dialog, pos ->
+            competenceAddingRelay.accept(currentCompetences + competences[pos])
+            dialog.dismiss()
+        }
+        builder.show()
     }
 
     @SuppressLint("InflateParams")

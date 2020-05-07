@@ -54,6 +54,7 @@ class DoctorProfilePresenter @Inject constructor(
             DoctorProfilePartialState.DoctorSaved -> oldState
             is DoctorProfilePartialState.NewPhone -> oldState.copy(changedDoctor = oldState.changedDoctor.copy(phone = it.phone))
             is DoctorProfilePartialState.CompetencesChange -> oldState.copy(changedDoctor = oldState.changedDoctor.copy(competenceList = it.list))
+            is DoctorProfilePartialState.CompetenceLoaded -> oldState.copy(possibleCompetences = it.list)
         }
     }
 
@@ -68,6 +69,7 @@ class DoctorProfilePresenter @Inject constructor(
                 is DoctorProfilePartialState.NewSurname -> doNothing()
                 is DoctorProfilePartialState.NewFathersName -> doNothing()
                 is DoctorProfilePartialState.NewLogin -> doNothing()
+                is DoctorProfilePartialState.CompetenceLoaded -> doNothing()
                 is DoctorProfilePartialState.Loading -> systemMessage.showProgress(it.flag)
                 is DoctorProfilePartialState.Error -> {
                     Timber.e(it.e)

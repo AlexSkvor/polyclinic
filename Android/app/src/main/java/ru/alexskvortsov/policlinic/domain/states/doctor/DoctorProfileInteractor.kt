@@ -10,11 +10,18 @@ class DoctorProfileInteractor @Inject constructor(
     private val repository: DoctorProfileRepository
 ) {
 
-    fun loadDoctor(): Observable<DoctorProfilePartialState> = repository.getDoctor()
-        .map { DoctorProfilePartialState.DoctorLoaded(it).partial() }
+    fun loadDoctor(): Observable<DoctorProfilePartialState> = loadDoctorOnly()
         .startWith(DoctorProfilePartialState.Loading(true))
-        .onErrorReturn { DoctorProfilePartialState.Error(it) }
+        .concatWith(loadAllCompetences())
         .endWith(DoctorProfilePartialState.Loading(false))
+
+    private fun loadDoctorOnly() = repository.getDoctor()
+        .map { DoctorProfilePartialState.DoctorLoaded(it).partial() }
+        .onErrorReturn { DoctorProfilePartialState.Error(it) }
+
+    private fun loadAllCompetences() = repository.getAllCompetences()
+        .map { DoctorProfilePartialState.CompetenceLoaded(it).partial() }
+        .onErrorReturn { DoctorProfilePartialState.Error(it) }
 
     fun verifyLogin(login: String): Observable<DoctorProfilePartialState> = repository.isLoginUnique(login)
         .map { DoctorProfilePartialState.LoginVerified(it).partial() }
@@ -22,7 +29,7 @@ class DoctorProfileInteractor @Inject constructor(
 
     fun saveDoctor(doctor: DoctorPerson): Observable<DoctorProfilePartialState> = repository.saveDoctor(doctor)
         .toObservableWithDefault(DoctorProfilePartialState.DoctorSaved.partial())
-        .concatWith(loadDoctor())
+        .concatWith(loadDoctorOnly())
         .startWith(DoctorProfilePartialState.Loading(true))
         .onErrorReturn { DoctorProfilePartialState.Error(it) }
         .endWith(DoctorProfilePartialState.Loading(false))

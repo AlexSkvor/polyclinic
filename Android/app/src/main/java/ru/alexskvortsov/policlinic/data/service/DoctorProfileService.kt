@@ -9,6 +9,7 @@ import ru.alexskvortsov.policlinic.data.storage.database.dao.CompetenceDao
 import ru.alexskvortsov.policlinic.data.storage.database.dao.DoctorDao
 import ru.alexskvortsov.policlinic.data.storage.database.dao.DoctorToCompetenceConnectionDao
 import ru.alexskvortsov.policlinic.data.storage.database.dao.UserDao
+import ru.alexskvortsov.policlinic.data.storage.database.entities.CompetenceEntity
 import ru.alexskvortsov.policlinic.data.storage.database.entities.DoctorEntity
 import ru.alexskvortsov.policlinic.data.storage.database.entities.DoctorToCompetenceConnectionEntity
 import ru.alexskvortsov.policlinic.data.storage.database.entities.UserEntity
@@ -35,6 +36,11 @@ class DoctorProfileService @Inject constructor(
         .observeOn(scheduler.ui())
 
     private val formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy")
+
+    override fun getAllCompetences(): Observable<List<CompetenceEntity>> = competenceDao.getAll()
+        .toObservable()
+        .subscribeOn(scheduler.io())
+        .observeOn(scheduler.ui())
 
     override fun getDoctor(): Observable<DoctorPerson> =
         Single.zip(userDao.getUserEntityById(prefs.currentUser.userId),

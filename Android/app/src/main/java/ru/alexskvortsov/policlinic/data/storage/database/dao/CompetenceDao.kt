@@ -12,6 +12,9 @@ interface CompetenceDao: BaseDao<CompetenceEntity> {
     @Query("SELECT * FROM competencies WHERE id in (SELECT competenceId FROM doctor_to_competence_connections WHERE doctorId = :doctorId)")
     fun getByDoctorId(doctorId: String): Single<List<CompetenceEntity>>
 
+    @Query("SELECT * FROM competencies")
+    fun getAll(): Single<List<CompetenceEntity>>
+
     @Query("DELETE FROM doctor_to_competence_connections WHERE doctorId = :doctorId")
     fun clearForDoctor(doctorId: String): Completable
 }

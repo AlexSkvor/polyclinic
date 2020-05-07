@@ -65,4 +65,5 @@
     <string name="berthDateHint">Дата рождения</string>
     <string name="phoneHint">Номер телефона</string>
     <string name="qualifications">Квалификации:</string>
+    <string name="chooseCompetence">Выберете компетенцию</string>
 </resources>
