@@ -34,6 +34,7 @@ class DoctorProfilePresenter @Inject constructor(
 
     private val reducer = BiFunction<DoctorProfileViewState, DoctorProfilePartialState, DoctorProfileViewState> { oldState, it ->
         when (it) {
+            DoctorProfilePartialState.DoctorSaved -> oldState
             is DoctorProfilePartialState.Loading -> oldState
             is DoctorProfilePartialState.Error -> oldState
             is DoctorProfilePartialState.DoctorLoaded -> DoctorProfileViewState(
@@ -51,7 +52,6 @@ class DoctorProfilePresenter @Inject constructor(
                 changedDoctor = oldState.changedDoctor.copy(login = it.login),
                 verificationStarted = true
             )
-            DoctorProfilePartialState.DoctorSaved -> oldState
             is DoctorProfilePartialState.NewPhone -> oldState.copy(changedDoctor = oldState.changedDoctor.copy(phone = it.phone))
             is DoctorProfilePartialState.CompetencesChange -> oldState.copy(changedDoctor = oldState.changedDoctor.copy(competenceList = it.list))
             is DoctorProfilePartialState.CompetenceLoaded -> oldState.copy(possibleCompetences = it.list)

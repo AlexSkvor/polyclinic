@@ -66,4 +66,12 @@
     <string name="phoneHint">Номер телефона</string>
     <string name="qualifications">Квалификации:</string>
     <string name="chooseCompetence">Выберете компетенцию</string>
+
+    <!-- Patient -->
+    <string name="hintPassport">Номер пасспорта</string>
+    <string name="hintOms">Номер полиса ОМС</string>
+    <string name="hintWeight">Вес, кг</string>
+    <string name="hintHeight">Рост, см</string>
+    <string name="hintSnils">Номер СНИЛС</string>
+
 </resources>

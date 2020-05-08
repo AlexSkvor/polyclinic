@@ -64,7 +64,7 @@ class DoctorProfileFragment : BaseMviFragment<DoctorProfileView, DoctorProfilePr
         renderEditTextField(state.changedDoctor.surname, surnameDoctorProfile)
         renderEditTextField(state.changedDoctor.name, nameDoctorProfile)
         renderEditTextField(state.changedDoctor.fathersName, fathersNameDoctorProfile)
-        renderEditTextField(state.changedDoctor.phone, phoneDoctorProfile)//TODO validation
+        renderEditTextField(state.changedDoctor.phone, phoneDoctorProfile)
         renderEditTextField(state.changedDoctor.skillLevel, skillLevelDoctorProfile)
         renderEditTextField(state.changedDoctor.berthDate, berthDateDoctorProfile)
         renderEditTextField(state.changedDoctor.workExperienceYears.toString(), workExperienceYearsDoctorProfile)

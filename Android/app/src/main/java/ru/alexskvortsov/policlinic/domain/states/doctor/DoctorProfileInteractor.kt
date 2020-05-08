@@ -29,8 +29,8 @@ class DoctorProfileInteractor @Inject constructor(
 
     fun saveDoctor(doctor: DoctorPerson): Observable<DoctorProfilePartialState> = repository.saveDoctor(doctor)
         .toObservableWithDefault(DoctorProfilePartialState.DoctorSaved.partial())
-        .concatWith(loadDoctorOnly())
         .startWith(DoctorProfilePartialState.Loading(true))
         .onErrorReturn { DoctorProfilePartialState.Error(it) }
+        .concatWith(loadDoctorOnly())
         .endWith(DoctorProfilePartialState.Loading(false))
 }

@@ -24,13 +24,10 @@ data class DoctorProfileViewState(
     val loginChanged: Boolean
         get() = doctor.login != changedDoctor.login
 
-    private fun String.isValidPhone(): Boolean {
-
-        return when {
-            isBlank() -> false
-            first() == '+' -> (substringAfter('+').length == 11) && (substringAfter('+').first() == '7') && (substringAfter('+').all { it in '0'..'9' })
-            first() == '8' -> (length == 11) && all { it in '0'..'9' }
-            else -> false
-        }
+    private fun String.isValidPhone(): Boolean = when {
+        isBlank() -> false
+        first() == '+' -> (substringAfter('+').length == 11) && (substringAfter('+').first() == '7') && (substringAfter('+').all { it in '0'..'9' })
+        first() == '8' -> (length == 11) && all { it in '0'..'9' }
+        else -> false
     }
 }

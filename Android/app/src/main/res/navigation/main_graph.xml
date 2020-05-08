@@ -23,4 +23,10 @@
         android:label="DoctorRootFragment"
         tools:layout="@layout/doctor_root_fragment" />
 
+    <fragment
+        android:id="@+id/patientsFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.patients.PatientRootFragment"
+        android:label="PatientRootFragment"
+        tools:layout="@layout/patient_root_fragment" />
+
 </navigation>

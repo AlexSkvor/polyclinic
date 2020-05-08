@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/patientRecordingFragment"
+    android:id="@+id/patient_graph">
+
+    <fragment
+        android:id="@+id/patientProfileFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.patients.PatientProfileFragment"
+        tools:layout="@layout/patient_profile_fragment"
+        android:label="PatientProfileFragment" />
+
+    <fragment
+        android:id="@+id/patientRecordingFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.patients.PatientRecordingFragment"
+        tools:layout="@layout/patient_recording_fragment"
+        android:label="PatientRecordingFragment" />
+
+</navigation>

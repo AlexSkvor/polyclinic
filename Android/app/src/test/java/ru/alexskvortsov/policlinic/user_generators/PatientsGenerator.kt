@@ -55,7 +55,7 @@ class PatientsGenerator {
             fun part(maxExclusive: Int = 1000): String {
                 return Random.nextInt(maxExclusive / 10, maxExclusive).toString()
             }
-            return "${part()}-${part()}-${part()}-${part(100)}"
+            return "${part()} ${part()} ${part()} ${part(100)}"
         }
 
         var snils = newSnils()

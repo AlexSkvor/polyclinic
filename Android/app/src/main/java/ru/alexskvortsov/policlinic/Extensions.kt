@@ -95,10 +95,11 @@ fun Fragment.getColor(@ColorRes colorId: Int): Int {
     return ContextCompat.getColor(requireContext(), colorId)
 }
 
-fun EditText.setTextIfNotEqual(text: CharSequence) {
+fun EditText.setTextIfNotEqual(text: CharSequence, setSelection: Boolean = true) {
     if (text.toString() != this.text.toString()) {
         this.setText(text)
-        if (text.isNotEmpty()) this.setSelection(text.length)
+        if (text.isNotEmpty() && setSelection)
+            this.setSelection(text.length)
     }
 }
 
