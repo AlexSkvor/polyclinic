@@ -53,6 +53,7 @@ class PatientProfilePresenter @Inject constructor(
             is PatientProfilePartialState.NewOmsNumber -> oldState.copy(changedPatient = oldState.changedPatient.copy(omsPoliceNumber = it.omsNumber))
             is PatientProfilePartialState.NewHeight -> oldState.copy(changedPatient = oldState.changedPatient.copy(height = it.height))
             is PatientProfilePartialState.NewWeight -> oldState.copy(changedPatient = oldState.changedPatient.copy(weight = it.weight))
+            is PatientProfilePartialState.NewPhone -> oldState.copy(changedPatient = oldState.changedPatient.copy(phone = it.phone))
         }
     }
 
@@ -76,6 +77,7 @@ class PatientProfilePresenter @Inject constructor(
                 is PatientProfilePartialState.NewOmsNumber -> doNothing()
                 is PatientProfilePartialState.NewHeight -> doNothing()
                 is PatientProfilePartialState.NewWeight -> doNothing()
+                is PatientProfilePartialState.NewPhone -> doNothing()
             }
         }.bind()
     }
@@ -101,6 +103,9 @@ class PatientProfilePresenter @Inject constructor(
         val loginChangedAction = loginChangedActionPure
             .map { PatientProfilePartialState.NewLogin(it) }
 
+        val phoneChangedAction = intent(PatientProfileView::phoneChangedIntent)
+            .map { PatientProfilePartialState.NewPhone(it) }
+
         val passportChangedAction = intent(PatientProfileView::passportChangedIntent)
             .map { PatientProfilePartialState.NewPassportNumber(it) }
 
@@ -121,7 +126,7 @@ class PatientProfilePresenter @Inject constructor(
 
         val list = listOf(
             initAction, nameChangedAction, surnameChangedAction, fathersNameChangedAction,
-            loginVerifyAction, loginChangedAction, saveAction, cancelAction,
+            loginVerifyAction, loginChangedAction, saveAction, cancelAction, phoneChangedAction,
             passportChangedAction, omsChangedAction, weightChangedAction, heightChangedAction
         )
 

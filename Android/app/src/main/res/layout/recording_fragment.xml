@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/marginBig"
+        android:layout_marginEnd="@dimen/marginBig">
+
+        <TextView
+            android:id="@+id/titleRecording"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:text="@string/titleRecording"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSizeLarge"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/patientFullName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:text="@string/choosePatientButton"
+            android:textColor="@color/blueTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleRecording" />
+
+        <Spinner
+            android:id="@+id/spinnerCompetences"
+            style="@style/standard_spinner"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/spinnerHeight"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginTop="@dimen/marginBig"
+            android:dropDownWidth="match_parent"
+            android:overlapAnchor="false"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/patientFullName" />
+
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/dateNotChosen"
+            android:textColor="@color/blueTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnerCompetences" />
+
+        <Spinner
+            android:id="@+id/spinnerDoctors"
+            style="@style/standard_spinner"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/spinnerHeight"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginTop="@dimen/marginBig"
+            android:dropDownWidth="match_parent"
+            android:overlapAnchor="false"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/reasonLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/hintReasonForRecord"
+            app:layout_constraintEnd_toEndOf="@id/titleRecording"
+            app:layout_constraintStart_toStartOf="@id/titleRecording"
+            app:layout_constraintTop_toBottomOf="@id/spinnerDoctors">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/reasonText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textNoSuggestions"
+                android:maxLines="3"
+                tools:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTime"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/marginBig"
+            app:layout_constraintBottom_toTopOf="@id/createRecordButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reasonLayout" />
+
+        <TextView
+            android:id="@+id/createRecordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginExtraLarge"
+            android:text="@string/makeRecord"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recyclerTime"
+            app:layout_constraintVertical_bias="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

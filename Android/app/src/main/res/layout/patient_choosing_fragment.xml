@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titlePatientChoosing"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginBig"
+        android:layout_marginTop="@dimen/marginBig"
+        android:layout_marginEnd="@dimen/marginBig"
+        android:text="@string/titleChoosePatient"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeLarge"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/chooseFilterTypeHint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginBig"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/chooseFilterType"
+        app:layout_constraintEnd_toEndOf="@id/titlePatientChoosing"
+        app:layout_constraintStart_toStartOf="@id/titlePatientChoosing"
+        app:layout_constraintTop_toBottomOf="@+id/titlePatientChoosing" />
+
+    <Spinner
+        android:id="@+id/spinnerFilterType"
+        style="@style/standard_spinner"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/spinnerHeight"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginTop="@dimen/marginBig"
+        android:dropDownWidth="match_parent"
+        android:overlapAnchor="false"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toEndOf="@id/titlePatientChoosing"
+        app:layout_constraintStart_toStartOf="@id/titlePatientChoosing"
+        app:layout_constraintTop_toBottomOf="@id/chooseFilterTypeHint" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/filterPatientChoosingLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginBig"
+        app:layout_constraintEnd_toEndOf="@id/titlePatientChoosing"
+        app:layout_constraintStart_toStartOf="@id/titlePatientChoosing"
+        app:layout_constraintTop_toBottomOf="@id/spinnerFilterType">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/filterPatientChoosing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textNoSuggestions"
+            android:maxLength="32"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            tools:text="name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/patientsRecycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginBig"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/titlePatientChoosing"
+        app:layout_constraintStart_toStartOf="@id/titlePatientChoosing"
+        app:layout_constraintTop_toBottomOf="@id/filterPatientChoosingLayout"
+        tools:listitem="@layout/item_patient" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

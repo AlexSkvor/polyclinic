@@ -5,6 +5,7 @@ import org.threeten.bp.LocalDateTime
 import ru.alexskvortsov.policlinic.data.storage.database.Converters
 import ru.alexskvortsov.policlinic.domain.defaultIfNull
 import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+import ru.alexskvortsov.policlinic.formatterDBDate
 import java.util.*
 
 @Entity(
@@ -41,7 +42,7 @@ data class PatientEntity(
     val height: Int,
     val phoneNumber: String,
     override val userId: String
-): UserSecondaryEntity {
+) : UserSecondaryEntity {
 
     override val fullName: String
         get() = "$surname ${name.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("")}. " +
@@ -56,3 +57,6 @@ data class PatientEntity(
     override val realId: String
         get() = id
 }
+
+val PatientEntity.strBerthDate: String
+    get() = berthDate.format(formatterDBDate)

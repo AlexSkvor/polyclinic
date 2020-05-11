@@ -4,7 +4,6 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
-import org.threeten.bp.format.DateTimeFormatter
 import ru.alexskvortsov.policlinic.data.storage.database.dao.CompetenceDao
 import ru.alexskvortsov.policlinic.data.storage.database.dao.DoctorDao
 import ru.alexskvortsov.policlinic.data.storage.database.dao.DoctorToCompetenceConnectionDao
@@ -17,6 +16,7 @@ import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
 import ru.alexskvortsov.policlinic.data.system.schedulers.Scheduler
 import ru.alexskvortsov.policlinic.domain.repository.DoctorProfileRepository
 import ru.alexskvortsov.policlinic.domain.states.doctor.DoctorPerson
+import ru.alexskvortsov.policlinic.formatterDBDate
 import java.util.*
 import javax.inject.Inject
 
@@ -34,8 +34,6 @@ class DoctorProfileService @Inject constructor(
         .toObservable()
         .subscribeOn(scheduler.io())
         .observeOn(scheduler.ui())
-
-    private val formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy")
 
     override fun getAllCompetences(): Observable<List<CompetenceEntity>> = competenceDao.getAll()
         .toObservable()
@@ -57,7 +55,7 @@ class DoctorProfileService @Inject constructor(
                     workExperienceYears = doctor.workExperienceYears,
                     educationMainDocumentRef = doctor.educationMainDocumentRef,
                     gender = doctor.gender,
-                    berthDate = doctor.berthDate.format(formatter),
+                    berthDate = doctor.berthDate.format(formatterDBDate),
                     phone = doctor.phone,
                     competenceList = emptyList()
                 )

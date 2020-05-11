@@ -4,7 +4,6 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
-import org.threeten.bp.format.DateTimeFormatter
 import ru.alexskvortsov.policlinic.data.storage.database.dao.PatientDao
 import ru.alexskvortsov.policlinic.data.storage.database.dao.UserDao
 import ru.alexskvortsov.policlinic.data.storage.database.entities.PatientEntity
@@ -13,6 +12,7 @@ import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
 import ru.alexskvortsov.policlinic.data.system.schedulers.Scheduler
 import ru.alexskvortsov.policlinic.domain.repository.PatientProfileRepository
 import ru.alexskvortsov.policlinic.domain.states.patient.PatientPerson
+import ru.alexskvortsov.policlinic.formatterDBDate
 import javax.inject.Inject
 
 class PatientProfileService @Inject constructor(
@@ -39,13 +39,14 @@ class PatientProfileService @Inject constructor(
                 login = user.login,
                 userId = user.id,
                 gender = patient.gender,
-                berthDate = patient.berthDate.format(formatter),
+                berthDate = patient.berthDate.format(formatterDBDate),
                 snilsNumber = patient.snilsNumber,
                 height = patient.height.toString(),
                 weight = patient.weight.toString(),
                 omsPoliceNumber = patient.omsPoliceNumber,
                 passportNumber = patient.passportNumber,
-                patientId = patient.id
+                patientId = patient.id,
+                phone = patient.phoneNumber
             )
         })
         .toObservable()
@@ -57,10 +58,9 @@ class PatientProfileService @Inject constructor(
             .andThen(
                 patientDao.updatePatient(
                     person.patientId, person.surname, person.name, person.fathersName,
-                    person.passportNumber, person.omsPoliceNumber, person.weight.toInt(), person.height.toInt()
+                    person.passportNumber, person.omsPoliceNumber, person.weight.toInt(), person.height.toInt(), person.phone
                 )
             ).subscribeOn(scheduler.io())
             .observeOn(scheduler.ui())
 
-    private val formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy")
 }

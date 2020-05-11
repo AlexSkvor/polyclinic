@@ -2,6 +2,7 @@ package ru.alexskvortsov.policlinic
 
 import android.content.Context
 import android.graphics.Rect
+import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import org.threeten.bp.format.DateTimeFormatter
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
@@ -95,11 +97,15 @@ fun Fragment.getColor(@ColorRes colorId: Int): Int {
     return ContextCompat.getColor(requireContext(), colorId)
 }
 
-fun EditText.setTextIfNotEqual(text: CharSequence, setSelection: Boolean = true) {
+fun View.getColor(@ColorRes colorId: Int): Int {
+    return ContextCompat.getColor(context, colorId)
+}
+
+fun EditText.setTextIfNotEqual(text: CharSequence) {
     if (text.toString() != this.text.toString()) {
         this.setText(text)
-        if (text.isNotEmpty() && setSelection)
-            this.setSelection(text.length)
+        if (text.isNotEmpty())
+            setSelection(this.text.length)
     }
 }
 
@@ -123,9 +129,32 @@ fun Fragment.isKeyboardOpen(): Boolean {
     } else false
 }
 
+inline fun <reified T : Any> Bundle.withArgument(key: String, value: T?): Bundle {
+    return if (value == null) this
+    else when (value) {
+        is String -> this.also { putString(key, value) }
+        is Int -> this.also { putInt(key, value) }
+        is Long -> this.also { putLong(key, value) }
+        is Boolean -> this.also { putBoolean(key, value) }
+        else -> throw IllegalArgumentException("Wrong value typeChosen! ${value::class}")
+    }
+}
+
 fun <T> Observable<T>.uiDebounce(delay: Long, timeUnits: TimeUnit = TimeUnit.MILLISECONDS): Observable<T> {
     return this.debounce(delay, timeUnits).observeOn(AndroidSchedulers.mainThread())
 }
 
 fun <T> Observable<T>.uiThrottleFirst(delay: Long, timeUnits: TimeUnit = TimeUnit.MILLISECONDS): Observable<T> =
     this.throttleFirst(delay, timeUnits).observeOn(AndroidSchedulers.mainThread())
+
+private const val patternDB = "MM.dd.yyyy HH:mm:ss"
+val formatterDB: DateTimeFormatter = DateTimeFormatter.ofPattern(patternDB)
+
+private const val patternDBDate = "MM.dd.yyyy"
+val formatterDBDate: DateTimeFormatter = DateTimeFormatter.ofPattern(patternDBDate)
+
+private const val patternUIDate = "dd.MM.yyyy"
+val formatterUiDate: DateTimeFormatter = DateTimeFormatter.ofPattern(patternUIDate)
+
+private const val patternUITime = "HH:mm"
+val formatterUiTime: DateTimeFormatter = DateTimeFormatter.ofPattern(patternUITime)

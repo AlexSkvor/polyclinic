@@ -5,6 +5,7 @@ import org.threeten.bp.LocalDateTime
 import ru.alexskvortsov.policlinic.data.storage.database.Converters
 import ru.alexskvortsov.policlinic.domain.defaultIfNull
 import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+import ru.alexskvortsov.policlinic.domain.utils.SpinnerItem
 import java.util.*
 
 @Entity(
@@ -35,7 +36,7 @@ data class DoctorEntity(
     val berthDate: LocalDateTime,
     val phone: String,
     override val userId: String
-): UserSecondaryEntity {
+): UserSecondaryEntity, SpinnerItem {
 
     override val fullName: String
         get() = "$surname ${name.toUpperCase(Locale.ROOT).firstOrNull().defaultIfNull("")}. " +
@@ -49,4 +50,10 @@ data class DoctorEntity(
 
     override val realId: String
         get() = id
+
+    override val uuid: String
+        get() = id
+
+    override val nameSpinner: String
+        get() = fullName
 }

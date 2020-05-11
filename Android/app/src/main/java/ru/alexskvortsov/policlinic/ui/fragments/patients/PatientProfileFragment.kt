@@ -16,6 +16,7 @@ import ru.alexskvortsov.policlinic.presentation.patient.PatientProfilePresenter
 import ru.alexskvortsov.policlinic.presentation.patient.PatientProfileView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment
 import ru.tinkoff.decoro.MaskImpl
+import ru.tinkoff.decoro.parser.PhoneNumberUnderscoreSlotsParser
 import ru.tinkoff.decoro.parser.UnderscoreDigitSlotsParser
 import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 import toothpick.Scope
@@ -48,6 +49,9 @@ class PatientProfileFragment : BaseMviFragment<PatientProfileView, PatientProfil
 
     override fun loginChangedIntent(): Observable<String> = loginPatientProfile.changes()
 
+    override fun phoneChangedIntent(): Observable<String> = phonePatientProfile.changes()
+        .map { it.filter { c -> c in '0'..'9' || c == '+' } }
+
     override fun passportChangedIntent(): Observable<String> = passportPatientProfile.changes()
 
     override fun omsChangedIntent(): Observable<String> = omsPatientProfile.changes()
@@ -68,16 +72,17 @@ class PatientProfileFragment : BaseMviFragment<PatientProfileView, PatientProfil
         renderEditTextField(state.changedPatient.name, namePatientProfile)
         renderEditTextField(state.changedPatient.fathersName, fathersNamePatientProfile)
         renderLogin(state)
-        renderEditTextField(state.changedPatient.passportNumber, passportPatientProfile, false)
-        renderEditTextField(state.changedPatient.omsPoliceNumber, omsPatientProfile, false)
+        renderEditTextField(state.changedPatient.phone, phonePatientProfile)
+        renderEditTextField(state.changedPatient.passportNumber, passportPatientProfile)
+        renderEditTextField(state.changedPatient.omsPoliceNumber, omsPatientProfile)
         renderEditTextField(state.changedPatient.weight, weightPatientProfile)
         renderEditTextField(state.changedPatient.height, heightPatientProfile)
         renderEditTextField(state.changedPatient.snilsNumber, snilsPatientProfile)
         renderEditTextField(state.changedPatient.berthDate, berthDatePatientProfile)
     }
 
-    private fun renderEditTextField(text: String, view: TextInputEditText, setSelection: Boolean = true) {
-        view.setTextIfNotEqual(text, setSelection)
+    private fun renderEditTextField(text: String, view: TextInputEditText) {
+        view.setTextIfNotEqual(text)
         view.inputLayout?.isErrorEnabled = text.isBlank()
 
         view.inputLayout?.error = if (text.isNotBlank()) null
@@ -125,6 +130,12 @@ class PatientProfileFragment : BaseMviFragment<PatientProfileView, PatientProfil
         maskOms.isForbidInputWhenFilled = true
         val omsWatcher = MaskFormatWatcher(maskOms)
         omsWatcher.installOn(omsPatientProfile)
+
+        val phoneSlots = PhoneNumberUnderscoreSlotsParser().parseSlots("+7 (___) ___ - ____")
+        val maskPhone = MaskImpl.createTerminated(phoneSlots)
+        maskPhone.isForbidInputWhenFilled = true
+        val phoneWatcher = MaskFormatWatcher(maskPhone)
+        phoneWatcher.installOn(phonePatientProfile)
     }
 
     private fun TextInputEditText.changes() = this.textChanges()

@@ -30,7 +30,9 @@ import ru.alexskvortsov.policlinic.data.storage.database.Converters
         )],
     indices = [Index(value = ["doctorId"], unique = false),
         Index(value = ["userAskedId"], unique = false),
-        Index(value = ["patientId"], unique = false)]
+        Index(value = ["patientId"], unique = false),
+        Index(value = ["date"], unique = false)
+    ]
 )
 @TypeConverters(Converters::class)
 data class ConsultationEntity(
@@ -38,6 +40,7 @@ data class ConsultationEntity(
     val doctorId: String,
     val userAskedId: String,
     val patientId: String,
+    val date: LocalDateTime,
     val startTimePlan: LocalDateTime,
     val endTimePlan: LocalDateTime,
     val descriptionOfReason: String,

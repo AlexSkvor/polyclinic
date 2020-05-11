@@ -14,6 +14,7 @@ sealed class PatientProfilePartialState(private val log: String) {
     data class NewSurname(val surname: String) : PatientProfilePartialState("NewSurname $surname")
     data class NewFathersName(val fathersName: String) : PatientProfilePartialState("NewFathersName $fathersName")
     data class NewLogin(val login: String) : PatientProfilePartialState("NewLogin $login")
+    data class NewPhone(val phone: String): PatientProfilePartialState("NewPhone $phone")
 
     data class NewPassportNumber(val passportNumber: String) : PatientProfilePartialState("NewPassportNumber $passportNumber")
     data class NewOmsNumber(val omsNumber: String) : PatientProfilePartialState("NewOmsNumber $omsNumber")

@@ -1,6 +1,7 @@
 package ru.alexskvortsov.policlinic.domain.states.doctor
 
 import ru.alexskvortsov.policlinic.data.storage.database.entities.CompetenceEntity
+import ru.alexskvortsov.policlinic.domain.filterDigits
 
 data class DoctorProfileViewState(
     val doctor: DoctorPerson = DoctorPerson.empty(),
@@ -26,8 +27,8 @@ data class DoctorProfileViewState(
 
     private fun String.isValidPhone(): Boolean = when {
         isBlank() -> false
-        first() == '+' -> (substringAfter('+').length == 11) && (substringAfter('+').first() == '7') && (substringAfter('+').all { it in '0'..'9' })
-        first() == '8' -> (length == 11) && all { it in '0'..'9' }
+        length != 12 -> false
+        first() == '+' -> (filterDigits().length == 11)
         else -> false
     }
 }

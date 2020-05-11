@@ -5,6 +5,7 @@ data class PatientPerson(
     val name: String,
     val fathersName: String,
     val login: String,
+    val phone: String,
     val passportNumber: String,
     val omsPoliceNumber: String,
     val weight: String,
@@ -20,7 +21,7 @@ data class PatientPerson(
         private val emptyInstance: PatientPerson by lazy {
             PatientPerson(
                 passportNumber = "", snilsNumber = "", omsPoliceNumber = "", weight = "", height = "", name = "",
-                surname = "", fathersName = "", login = "", gender = true, berthDate = "", userId = "", patientId = ""
+                surname = "", fathersName = "", login = "", gender = true, berthDate = "", userId = "", patientId = "", phone = ""
             )
         }
 

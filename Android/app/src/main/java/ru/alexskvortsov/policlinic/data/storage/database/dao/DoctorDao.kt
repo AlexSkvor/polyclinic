@@ -15,9 +15,15 @@ interface DoctorDao : BaseDao<DoctorEntity> {
     @Query("SELECT * FROM doctors WHERE userId = :userId")
     fun getByUserId(userId: String): Single<DoctorEntity>
 
+    @Query("SELECT * FROM doctors WHERE id = :id")
+    fun getById(id: String): Single<DoctorEntity>
+
     @Query("SELECT COUNT(*) FROM doctors WHERE userId = :userId")
     fun existsWithUserId(userId: String): Int
 
     @Query("UPDATE doctors SET name = :name, surname = :surname, fathersName = :fathersName, phone = :phone WHERE id = :id")
     fun updateFullNameAndPhone(name: String, surname: String, fathersName: String, phone: String, id: String): Completable
+
+    @Query("SELECT * FROM doctors WHERE id in (SELECT doctorId FROM doctor_to_competence_connections WHERE competenceId = :competenceId)")
+    fun getByCompetenceId(competenceId: String): Single<List<DoctorEntity>>
 }

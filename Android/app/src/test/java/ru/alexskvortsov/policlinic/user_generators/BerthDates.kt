@@ -1,13 +1,10 @@
 package ru.alexskvortsov.policlinic.user_generators
 
 import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
+import ru.alexskvortsov.policlinic.formatterDB
 import kotlin.random.Random
 
-
-fun getBerthDate(): LocalDateTime = LocalDateTime.parse(randomDateString(), formatter)
-
-private val formatter = DateTimeFormatter.ofPattern("MM.dd.yyyy HH:mm:ss")
+fun getBerthDate(): LocalDateTime = LocalDateTime.parse(randomDateString(), formatterDB)
 
 private fun randomDateString(): String {
     val year = Random.nextInt(1980, 2000).toString()

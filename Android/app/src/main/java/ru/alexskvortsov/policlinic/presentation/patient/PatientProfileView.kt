@@ -13,6 +13,8 @@ interface PatientProfileView : MvpView {
     fun fathersNameChangedIntent(): Observable<String>
     fun loginChangedIntent(): Observable<String>
 
+    fun phoneChangedIntent(): Observable<String>
+
     fun passportChangedIntent(): Observable<String>
     fun omsChangedIntent(): Observable<String>
 

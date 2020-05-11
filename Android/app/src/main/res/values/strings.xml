@@ -74,4 +74,20 @@
     <string name="hintHeight">Рост, см</string>
     <string name="hintSnils">Номер СНИЛС</string>
 
+
+    <!-- Recording -->
+    <string name="titleRecording">Запись на прием</string>
+    <string name="choosePatientButton">ВЫБРАТЬ ПАЦИЕНТА</string>
+    <string name="dateNotChosen">ДАТА</string>
+    <string name="dateChosen">Дата %s</string>
+    <string name="makeRecord">ЗАПИСАТЬСЯ</string>
+    <string name="titleChoosePatient">Выберите пациента</string>
+    <string name="chooseFilterType">Тип фильтра</string>
+    <string name="recordCreated">Запись успешно сохранена!</string>
+    <string name="hintReasonForRecord">Причина для обращения</string>
+    <string name="berthDateFieldValue">Дата рождения: %s</string>
+    <string name="omsFiledValue">ОМС: %s</string>
+    <string name="chooseTomorrowOrLater">Выберите дату начиная с завтрашнего дня</string>
+    <string name="durationItemText">К %s, продолжительность 30 минут</string>
+
 </resources>

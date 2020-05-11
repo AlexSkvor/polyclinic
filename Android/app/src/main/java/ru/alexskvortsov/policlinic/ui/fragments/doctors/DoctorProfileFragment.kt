@@ -2,6 +2,8 @@ package ru.alexskvortsov.policlinic.ui.fragments.doctors
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.os.Bundle
+import android.view.View
 import com.google.android.material.textfield.TextInputEditText
 import com.jakewharton.rxbinding3.view.clicks
 import com.jakewharton.rxbinding3.widget.textChanges
@@ -18,6 +20,9 @@ import ru.alexskvortsov.policlinic.domain.states.doctor.DoctorProfileViewState
 import ru.alexskvortsov.policlinic.presentation.doctor.DoctorProfilePresenter
 import ru.alexskvortsov.policlinic.presentation.doctor.DoctorProfileView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment
+import ru.tinkoff.decoro.MaskImpl
+import ru.tinkoff.decoro.parser.PhoneNumberUnderscoreSlotsParser
+import ru.tinkoff.decoro.watchers.MaskFormatWatcher
 import toothpick.Scope
 import toothpick.config.Module
 import java.util.concurrent.TimeUnit
@@ -48,6 +53,7 @@ class DoctorProfileFragment : BaseMviFragment<DoctorProfileView, DoctorProfilePr
     override fun loginChangedIntent(): Observable<String> = loginDoctorProfile.changes()
 
     override fun phoneChangedIntent(): Observable<String> = phoneDoctorProfile.changes()
+        .map { it.filter { c -> c in '0'..'9' || c == '+' } }
 
     private val competenceAddingRelay = PublishRelay.create<List<CompetenceEntity>>()
     override fun competencesChangeIntent(): Observable<List<CompetenceEntity>> = competenceAddingRelay.hide()
@@ -125,6 +131,20 @@ class DoctorProfileFragment : BaseMviFragment<DoctorProfileView, DoctorProfilePr
             else saveButtonDoctorProfile.setTextColor(getColor(R.color.attributeNameColor))
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setMasks()
+    }
+
+    private fun setMasks() {
+        val phoneSlots = PhoneNumberUnderscoreSlotsParser().parseSlots("+7 (___) ___ - ____")
+        val maskPhone = MaskImpl.createTerminated(phoneSlots)
+        maskPhone.isForbidInputWhenFilled = true
+        val phoneWatcher = MaskFormatWatcher(maskPhone)
+        phoneWatcher.installOn(phoneDoctorProfile)
+    }
+
 
     private fun TextInputEditText.changes() = this.textChanges()
         .skipInitialValue()

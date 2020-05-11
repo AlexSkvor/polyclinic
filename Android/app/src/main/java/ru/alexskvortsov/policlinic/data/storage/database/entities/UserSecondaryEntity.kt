@@ -8,4 +8,8 @@ interface UserSecondaryEntity {
     val initialSurnameLetter: String
     val type: UserAuthInfo.UserType
     val realId: String
+
+    fun isPatient(): Boolean {
+        return type == UserAuthInfo.UserType.PATIENT
+    }
 }

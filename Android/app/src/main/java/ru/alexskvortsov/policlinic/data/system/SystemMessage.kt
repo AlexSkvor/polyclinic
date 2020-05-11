@@ -3,7 +3,6 @@ package ru.alexskvortsov.policlinic.data.system
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import ru.alexskvortsov.policlinic.alsoPrintDebug
 
 class SystemMessage {
     private val notifierRelay = PublishRelay.create<Message>()
@@ -12,7 +11,7 @@ class SystemMessage {
             .observeOn(AndroidSchedulers.mainThread())
 
     private fun Message.log(msg: String): Message =
-            if (type is Type.Progress) this.also { progress.alsoPrintDebug(msg) }
+            if (type is Type.Progress) this
             else this
 
     fun sendSystemMessage(message: Message) = notifierRelay.accept(message)

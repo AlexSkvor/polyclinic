@@ -9,8 +9,7 @@ inline fun <reified T> Observable<T>.endWith(tail: T): Observable<T> =
     this.concatWith(Single.just(tail))
 
 fun String.filterDigits(): String =
-    this.filter { it in '0'..'9' || it == '-' || it == '+' || it == ',' || it == '.' }
-        .replace(',', '.')
+    this.filter { it in '0'..'9' }
 
 val Int.even: Boolean
     get() = this % 2 == 0

@@ -108,6 +108,26 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneLayoutPatientProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginBig"
+            android:hint="@string/phoneHint"
+            app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutPatientProfile"
+            app:layout_constraintStart_toStartOf="@id/fathersNameLayoutPatientProfile"
+            app:layout_constraintTop_toBottomOf="@id/loginLayoutPatientProfile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phonePatientProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                tools:text="+79052469003" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passportLayoutPatientProfile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -115,13 +135,13 @@
             android:hint="@string/hintPassport"
             app:layout_constraintEnd_toEndOf="@id/fathersNameLayoutPatientProfile"
             app:layout_constraintStart_toStartOf="@id/fathersNameLayoutPatientProfile"
-            app:layout_constraintTop_toBottomOf="@id/loginLayoutPatientProfile">
+            app:layout_constraintTop_toBottomOf="@id/phoneLayoutPatientProfile">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passportPatientProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textNoSuggestions"
+                android:inputType="phone"
                 android:maxLength="11"
                 android:maxLines="1"
                 android:textColor="@color/black"
@@ -142,7 +162,7 @@
                 android:id="@+id/omsPatientProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textNoSuggestions"
+                android:inputType="phone"
                 android:maxLength="19"
                 android:maxLines="1"
                 android:textColor="@color/black"
