@@ -29,7 +29,7 @@ class PatientProfileService @Inject constructor(
         .subscribeOn(scheduler.io())
         .observeOn(scheduler.ui())
 
-    override fun getPatient(): Observable<PatientPerson> = Single.zip(userDao.getUserEntityById(prefs.currentUser.userId),
+    override fun getPatient(): Observable<PatientPerson> = Single.zip(userDao.getById(prefs.currentUser.userId),
         patientDao.getByUserId(prefs.currentUser.userId),
         BiFunction<UserEntity, PatientEntity, PatientPerson> { user, patient ->
             PatientPerson(

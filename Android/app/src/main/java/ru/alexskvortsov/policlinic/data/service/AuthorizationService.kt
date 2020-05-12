@@ -40,7 +40,7 @@ class AuthorizationService @Inject constructor(
                     userUseToApp = prefs.saveSignInUserId.indexOfFirst { id -> id == it.userId }
                 )
             }.flattenFlatMap { user ->
-                userDao.getUserEntityById(user.id)
+                userDao.getById(user.id)
                     .map { user.copy(fullName = if (it.login.isNotEmpty()) it.login else user.fullName, password = it.password) }.toObservable()
             }.subscribeOn(scheduler.io())
             .observeOn(scheduler.ui())
@@ -64,7 +64,7 @@ class AuthorizationService @Inject constructor(
                 userUseToApp = prefs.saveSignInUserId.indexOfFirst { id -> id == it.userId }
             )
         }.flatMap { user ->
-            userDao.getUserEntityById(user.id)
+            userDao.getById(user.id)
                 .map { user.copy(fullName = if (it.login.isNotEmpty()) it.login else user.fullName, password = it.password) }
         }.subscribeOn(scheduler.io())
         .observeOn(scheduler.ui())

@@ -13,5 +13,5 @@ interface RecordingRepository {
     fun getDoctorsForCompetence(competenceId: String): Single<List<DoctorEntity>>
     fun getPossibleTimeList(date: LocalDateTime, doctorId: String): Single<List<LocalDateTime>>
     fun getDoctor(doctorId: String): Single<DoctorEntity>
-    fun createRecord(patientEntity: PatientEntity, startTime: LocalDateTime, doctorEntity: DoctorEntity, reason: String): Single<String>
+    fun createRecord(patientEntity: PatientEntity, startTime: LocalDateTime, doctorEntity: DoctorEntity, reason: String, competenceEntity: CompetenceEntity): Single<String>
 }

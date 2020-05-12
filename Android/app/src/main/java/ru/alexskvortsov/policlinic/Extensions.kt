@@ -158,3 +158,6 @@ val formatterUiDate: DateTimeFormatter = DateTimeFormatter.ofPattern(patternUIDa
 
 private const val patternUITime = "HH:mm"
 val formatterUiTime: DateTimeFormatter = DateTimeFormatter.ofPattern(patternUITime)
+
+private const val patternUIDateTime = "dd.MM.yyyy HH:mm"
+val formatterUiDateTime: DateTimeFormatter = DateTimeFormatter.ofPattern(patternUIDateTime)

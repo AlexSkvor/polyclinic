@@ -1,6 +1,7 @@
 package ru.alexskvortsov.policlinic.domain.states.records.recording
 
 import org.threeten.bp.LocalDateTime
+import ru.alexskvortsov.policlinic.data.storage.database.entities.CompetenceEntity
 import ru.alexskvortsov.policlinic.data.storage.database.entities.DoctorEntity
 import ru.alexskvortsov.policlinic.data.storage.database.entities.PatientEntity
 import ru.alexskvortsov.policlinic.domain.endWith
@@ -48,8 +49,8 @@ class RecordingInteractor @Inject constructor(
         .map { RecordingPartialState.DoctorChosen(it).partial() }
         .onErrorReturn { RecordingPartialState.Error(it) }
 
-    fun createRecord(patientEntity: PatientEntity, startTime: LocalDateTime, doctorEntity: DoctorEntity, reason: String) =
-        repository.createRecord(patientEntity, startTime, doctorEntity, reason).toObservable()
+    fun createRecord(patientEntity: PatientEntity, startTime: LocalDateTime, doctorEntity: DoctorEntity, reason: String, competenceEntity: CompetenceEntity) =
+        repository.createRecord(patientEntity, startTime, doctorEntity, reason, competenceEntity).toObservable()
             .map { RecordingPartialState.RecordCreated(it).partial() }
             .startWith(RecordingPartialState.Loading(true))
             .onErrorReturn { RecordingPartialState.Error(it) }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_border"
+    android:orientation="vertical"
+    android:padding="@dimen/marginBig">
+
+    <TextView
+        android:id="@+id/competenceField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/textSizeLarge"
+        tools:text="Направление: Стоматолог" />
+
+    <TextView
+        android:id="@+id/patientField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeLarge"
+        tools:text="Пациент: Скворцов А.П." />
+
+    <TextView
+        android:id="@+id/doctorField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeLarge"
+        tools:text="Специалист: Куйбышев Д.В." />
+
+    <TextView
+        android:id="@+id/dateTimeField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeLarge"
+        tools:text="Дата 29.12.1995 20:30" />
+
+    <TextView
+        android:id="@+id/creatorFieldField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSizeLarge"
+        tools:text="Записал(а): Васильева А.С." />
+
+</LinearLayout>

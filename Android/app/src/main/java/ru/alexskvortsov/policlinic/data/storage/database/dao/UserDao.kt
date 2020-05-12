@@ -10,7 +10,7 @@ import ru.alexskvortsov.policlinic.data.storage.database.entities.UserEntity
 interface UserDao : BaseDao<UserEntity> {
 
     @Query("SELECT * FROM users WHERE id = :id")
-    fun getUserEntityById(id: String): Single<UserEntity>
+    fun getById(id: String): Single<UserEntity>
 
     @Query("UPDATE users SET password = :newPassword WHERE id = :id")
     fun updatePassword(id: String, newPassword: String): Completable

@@ -15,6 +15,13 @@ import ru.alexskvortsov.policlinic.data.storage.database.Converters
             onUpdate = ForeignKey.CASCADE
         ),
         ForeignKey(
+            entity = CompetenceEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["competenceId"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
             entity = UserEntity::class,
             parentColumns = ["id"],
             childColumns = ["userAskedId"],
@@ -29,6 +36,7 @@ import ru.alexskvortsov.policlinic.data.storage.database.Converters
             onUpdate = ForeignKey.CASCADE
         )],
     indices = [Index(value = ["doctorId"], unique = false),
+        Index(value = ["competenceId"], unique = false),
         Index(value = ["userAskedId"], unique = false),
         Index(value = ["patientId"], unique = false),
         Index(value = ["date"], unique = false)
@@ -38,6 +46,7 @@ import ru.alexskvortsov.policlinic.data.storage.database.Converters
 data class ConsultationEntity(
     @PrimaryKey val id: String,
     val doctorId: String,
+    val competenceId: String,
     val userAskedId: String,
     val patientId: String,
     val date: LocalDateTime,

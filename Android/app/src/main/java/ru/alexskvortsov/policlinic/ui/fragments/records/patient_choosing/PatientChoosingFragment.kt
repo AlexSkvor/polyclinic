@@ -153,11 +153,7 @@ class PatientChoosingFragment : BaseMviDialogFragment<PatientChoosingView, Patie
 
         inflatedView.patientsRecycler.layoutManager = LinearLayoutManager(requireContext())
         val space = resources.getDimensionPixelSize(R.dimen.marginExtraLarge)
-        inflatedView.patientsRecycler.addItemDecoration(
-            CardRecyclerDecoration(
-                space
-            )
-        )
+        inflatedView.patientsRecycler.addItemDecoration(CardRecyclerDecoration(space))
         inflatedView.patientsRecycler.adapter = patientsAdapter
 
         return AlertDialog.Builder(requireContext(), R.style.DialogTheme)

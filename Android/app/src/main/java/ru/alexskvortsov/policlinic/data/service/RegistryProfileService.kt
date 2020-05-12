@@ -35,7 +35,7 @@ class RegistryProfileService @Inject constructor(
         .subscribeOn(scheduler.io())
         .observeOn(scheduler.ui())
 
-    private fun getUser() = userDao.getUserEntityById(prefs.currentUser.userId)
+    private fun getUser() = userDao.getById(prefs.currentUser.userId)
 
     private fun getRegistry() = registryDao.getById(prefs.currentUser.realId)
 

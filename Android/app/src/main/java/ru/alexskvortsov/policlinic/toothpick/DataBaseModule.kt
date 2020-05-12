@@ -19,8 +19,6 @@ class DataBaseModule : Module() {
             .singleton()
         bind(FactConsultationDao::class.java).toProvider(FactConsultationDaoProvider::class.java)
             .singleton()
-        bind(AttachedDocumentDao::class.java).toProvider(AttachedDocumentDaoProvider::class.java)
-            .singleton()
         bind(FactConsultationToProceduresConnectionDao::class.java).toProvider(
             FactConsultationToProceduresConnectionDaoProvider::class.java
         ).singleton()

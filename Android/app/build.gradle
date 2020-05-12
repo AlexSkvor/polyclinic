@@ -62,6 +62,9 @@ dependencies {
     // Mosby
     implementation "com.hannesdorfmann.mosby3:mvi:$mosbyVers"
 
+    //Switch
+    implementation 'com.llollox:androidtoggleswitch:2.0.1'
+
     // Toothpick
     implementation "com.github.stephanenicolas.toothpick:ktp:$toothpickVersion"
     kapt "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpickVersion"

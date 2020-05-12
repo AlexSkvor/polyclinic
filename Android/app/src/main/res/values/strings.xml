@@ -89,5 +89,13 @@
     <string name="omsFiledValue">ОМС: %s</string>
     <string name="chooseTomorrowOrLater">Выберите дату начиная с завтрашнего дня</string>
     <string name="durationItemText">К %s, продолжительность 30 минут</string>
+    <string name="futureConsultations">Запланированные</string>
+    <string name="pastConsultations">Прошедшие</string>
+    <string name="competenceConsultationInfo">Направление: %s</string>
+    <string name="competenceConsultationInfoCancelled">Направление: %s (ОТМЕНЕНО)</string>
+    <string name="patientConsultationInfo">Пациент: %s</string>
+    <string name="doctorConsultationInfo">Специалист: %s</string>
+    <string name="dateTimeConsultationInfo">Дата %s</string>
+    <string name="creatorConsultationInfo">Записал(а): %s</string>
 
 </resources>

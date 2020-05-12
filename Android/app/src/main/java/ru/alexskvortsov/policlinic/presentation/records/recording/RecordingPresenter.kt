@@ -94,7 +94,8 @@ class RecordingPresenter @Inject constructor(
                 requireNotNull(patientEntity)
                 requireNotNull(startTime)
                 requireNotNull(doctorEntity)
-                interactor.createRecord(patientEntity, startTime, doctorEntity, reason)
+                requireNotNull(competenceEntity)
+                interactor.createRecord(patientEntity, startTime, doctorEntity, reason, competenceEntity)
             }
 
         val list = listOf(

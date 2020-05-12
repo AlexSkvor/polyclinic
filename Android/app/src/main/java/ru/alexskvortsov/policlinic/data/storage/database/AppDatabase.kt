@@ -13,7 +13,6 @@ import ru.alexskvortsov.policlinic.data.storage.database.entities.*
         UserEntity::class,
         ConsultationEntity::class,
         FactConsultationEntity::class,
-        AttachedDocumentEntity::class,
         ProcedureEntity::class,
         FactConsultationToProceduresConnectionEntity::class,
         CompetenceEntity::class,
@@ -27,7 +26,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun consultationDao(): ConsultationDao
     abstract fun factConsultationDao(): FactConsultationDao
-    abstract fun attachedDocumentDao(): AttachedDocumentDao
     abstract fun procedureDao(): ProcedureDao
     abstract fun factConsultationToProceduresConnectionDao(): FactConsultationToProceduresConnectionDao
     abstract fun competenceDao(): CompetenceDao

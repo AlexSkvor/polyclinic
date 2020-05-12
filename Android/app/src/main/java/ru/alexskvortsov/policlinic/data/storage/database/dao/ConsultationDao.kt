@@ -16,4 +16,23 @@ abstract class ConsultationDao : BaseDao<ConsultationEntity> {
     fun getByDateAndDoctorId(date: LocalDate, doctorId: String, cancelled: Boolean = false): Single<List<ConsultationEntity>> =
         getByDateStringAndDoctorId(date.atStartOfDay().format(formatterDB), doctorId, cancelled)
 
+    @Query("SELECT * FROM consultations_in_plan WHERE (doctorId = :doctorId OR userAskedId = :userId) AND (cancelled = :t OR id in (SELECT consultationId FROM fact_consultations))")
+    abstract fun getListForDoctorIdPast(doctorId: String, userId: String, t: Boolean = true): Single<List<ConsultationEntity>>
+
+    @Query("SELECT * FROM consultations_in_plan WHERE (doctorId = :doctorId OR userAskedId = :userId) AND (NOT cancelled = :t) AND (NOT id in (SELECT consultationId FROM fact_consultations))")
+    abstract fun getListForDoctorIdFuture(doctorId: String, userId: String, t: Boolean = true): Single<List<ConsultationEntity>>
+
+
+    @Query("SELECT * FROM consultations_in_plan WHERE (patientId = :patientId OR userAskedId = :userId) AND (NOT cancelled = :t) AND (NOT id in (SELECT consultationId FROM fact_consultations))")
+    abstract fun getListForPatientIdFuture(patientId: String, userId: String, t: Boolean = true): Single<List<ConsultationEntity>>
+
+    @Query("SELECT * FROM consultations_in_plan WHERE (patientId = :patientId OR userAskedId = :userId) AND (cancelled = :t OR id in (SELECT consultationId FROM fact_consultations))")
+    abstract fun getListForPatientIdPast(patientId: String, userId: String, t: Boolean = true): Single<List<ConsultationEntity>>
+
+
+    @Query("SELECT * FROM consultations_in_plan WHERE userAskedId = :userId AND (NOT cancelled = :t) AND (NOT id in (SELECT consultationId FROM fact_consultations))")
+    abstract fun getListForRegistryIdFuture(userId: String, t: Boolean = true): Single<List<ConsultationEntity>>
+
+    @Query("SELECT * FROM consultations_in_plan WHERE userAskedId = :userId AND (cancelled = :t OR id in (SELECT consultationId FROM fact_consultations))")
+    abstract fun getListForRegistryIdPast(userId: String, t: Boolean = true): Single<List<ConsultationEntity>>
 }

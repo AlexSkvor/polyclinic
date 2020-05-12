@@ -70,7 +70,8 @@ class RecordingService @Inject constructor(
         patientEntity: PatientEntity,
         startTime: LocalDateTime,
         doctorEntity: DoctorEntity,
-        reason: String
+        reason: String,
+        competenceEntity: CompetenceEntity
     ): Single<String> {
         val newId = UUID.randomUUID().toString()
         val newConsultation = ConsultationEntity(
@@ -82,7 +83,8 @@ class RecordingService @Inject constructor(
             startTimePlan = startTime,
             endTimePlan = startTime.plusMinutes(30),
             descriptionOfReason = reason,
-            cancelled = false
+            cancelled = false,
+            competenceId = competenceEntity.id
         )
         return Completable.fromAction { consultationDao.insert(newConsultation) }
             .toSingleDefault(newId)
