@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.domain.states.registry.profile
+package ru.alexskvortsov.policlinic.domain.states.registry
 
 sealed class RegistryProfilePartialState(val log: String) {
 

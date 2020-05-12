@@ -11,7 +11,7 @@ import ru.alexskvortsov.policlinic.data.storage.database.entities.UserEntity
 import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
 import ru.alexskvortsov.policlinic.data.system.schedulers.Scheduler
 import ru.alexskvortsov.policlinic.domain.repository.RegistryProfileRepository
-import ru.alexskvortsov.policlinic.domain.states.registry.profile.RegistryPerson
+import ru.alexskvortsov.policlinic.domain.states.registry.RegistryPerson
 import javax.inject.Inject
 
 class RegistryProfileService @Inject constructor(

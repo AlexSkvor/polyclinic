@@ -10,11 +10,7 @@ data class PatientChoosingViewState(
 ) {
 
     val possibleFilters
-        get() = possibleFiltersCompanion
-
-    companion object {
-        private val possibleFiltersCompanion: List<Filter> by lazy { listOf(Filter.Passport, Filter.Phone, Filter.Oms, Filter.Snils, Filter.Surname) }
-    }
+        get() = Filter.possibleFiltersCompanion
 
     sealed class Filter(
         override val nameSpinner: String,
@@ -25,5 +21,9 @@ data class PatientChoosingViewState(
         object Oms : Filter("Номер ОМС")
         object Snils : Filter("Номер СНИЛС")
         object Surname : Filter("Фамилия")
+
+        companion object {
+            val possibleFiltersCompanion: List<Filter> by lazy { listOf(Passport, Phone, Oms, Snils, Surname) }
+        }
     }
 }

@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.domain.states.registry.profile
+package ru.alexskvortsov.policlinic.domain.states.registry
 
 import io.reactivex.Observable
 import ru.alexskvortsov.policlinic.domain.endWith

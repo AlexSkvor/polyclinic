@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.registry_profile_fragment.*
 import ru.alexskvortsov.policlinic.*
 import ru.alexskvortsov.policlinic.data.service.RegistryProfileService
 import ru.alexskvortsov.policlinic.domain.repository.RegistryProfileRepository
-import ru.alexskvortsov.policlinic.domain.states.registry.profile.RegistryProfileViewState
+import ru.alexskvortsov.policlinic.domain.states.registry.RegistryProfileViewState
 import ru.alexskvortsov.policlinic.presentation.registry.RegistryProfilePresenter
 import ru.alexskvortsov.policlinic.presentation.registry.RegistryProfileView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment

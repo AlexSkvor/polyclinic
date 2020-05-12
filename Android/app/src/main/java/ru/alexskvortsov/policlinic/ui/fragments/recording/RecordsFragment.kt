@@ -1,21 +1,20 @@
-package ru.alexskvortsov.policlinic.ui.fragments.patients
+package ru.alexskvortsov.policlinic.ui.fragments.recording
 
 import android.os.Bundle
 import android.view.View
 import com.jakewharton.rxrelay2.PublishRelay
-import kotlinx.android.synthetic.main.patient_recording_fragment.*
+import kotlinx.android.synthetic.main.records_fragment.*
 import ru.alexskvortsov.policlinic.R
-import ru.alexskvortsov.policlinic.presentation.patient.PatientRecordingPresenter
-import ru.alexskvortsov.policlinic.presentation.patient.PatientRecordingView
+import ru.alexskvortsov.policlinic.presentation.recording.RecordsPresenter
+import ru.alexskvortsov.policlinic.presentation.recording.RecordsView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment
-import ru.alexskvortsov.policlinic.ui.fragments.recording.RecordingDialogFragment
-//TODO make it common
-class PatientRecordingFragment : BaseMviFragment<PatientRecordingView, PatientRecordingPresenter>(), PatientRecordingView {
+
+class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(),
+    RecordsView {
     override val layoutRes: Int
-        get() = R.layout.patient_recording_fragment
+        get() = R.layout.records_fragment
 
-
-    override fun createPresenter(): PatientRecordingPresenter = fromScope()
+    override fun createPresenter(): RecordsPresenter = fromScope()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +28,9 @@ class PatientRecordingFragment : BaseMviFragment<PatientRecordingView, PatientRe
             val recordingFragment = RecordingDialogFragment.newInstance(scope.name.toString()) {
                 recordAddedRelay.accept(it)
             }
-            recordingFragment.show(requireActivity().supportFragmentManager, RECORDING_DIALOG_TAG)
+            recordingFragment.show(requireActivity().supportFragmentManager,
+                RECORDING_DIALOG_TAG
+            )
             requireActivity().supportFragmentManager.executePendingTransactions()
         }
     }

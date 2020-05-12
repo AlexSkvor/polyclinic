@@ -8,9 +8,9 @@ import ru.alexskvortsov.policlinic.R
 import ru.alexskvortsov.policlinic.data.system.ResourceManager
 import ru.alexskvortsov.policlinic.data.system.SystemMessage
 import ru.alexskvortsov.policlinic.domain.doNothing
-import ru.alexskvortsov.policlinic.domain.states.registry.profile.RegistryProfileInteractor
-import ru.alexskvortsov.policlinic.domain.states.registry.profile.RegistryProfilePartialState
-import ru.alexskvortsov.policlinic.domain.states.registry.profile.RegistryProfileViewState
+import ru.alexskvortsov.policlinic.domain.states.registry.RegistryProfileInteractor
+import ru.alexskvortsov.policlinic.domain.states.registry.RegistryProfilePartialState
+import ru.alexskvortsov.policlinic.domain.states.registry.RegistryProfileViewState
 import ru.alexskvortsov.policlinic.presentation.base.BaseMviPresenter
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationAction
 import ru.alexskvortsov.policlinic.presentation.navigation.NavigationActionRelay
@@ -56,7 +56,9 @@ class RegistryProfilePresenter @Inject constructor(
         when (it) {
             is RegistryProfilePartialState.Loading -> oldState
             is RegistryProfilePartialState.Error -> oldState
-            is RegistryProfilePartialState.PersonLoaded -> RegistryProfileViewState(it.person)
+            is RegistryProfilePartialState.PersonLoaded -> RegistryProfileViewState(
+                it.person
+            )
             is RegistryProfilePartialState.LoginVerified -> {
                 if (!oldState.verificationStarted) oldState
                 else oldState.copy(verificationStarted = false, loginUnique = it.unique)

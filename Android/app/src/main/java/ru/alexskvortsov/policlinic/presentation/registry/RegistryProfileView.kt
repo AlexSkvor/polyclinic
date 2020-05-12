@@ -2,7 +2,7 @@ package ru.alexskvortsov.policlinic.presentation.registry
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
 import io.reactivex.Observable
-import ru.alexskvortsov.policlinic.domain.states.registry.profile.RegistryProfileViewState
+import ru.alexskvortsov.policlinic.domain.states.registry.RegistryProfileViewState
 
 interface RegistryProfileView : MvpView {
 

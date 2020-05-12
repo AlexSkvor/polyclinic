@@ -13,8 +13,8 @@
 
     <fragment
         android:id="@+id/patientRecordingFragment"
-        android:name="ru.alexskvortsov.policlinic.ui.fragments.patients.PatientRecordingFragment"
-        tools:layout="@layout/patient_recording_fragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.recording.RecordsFragment"
+        tools:layout="@layout/records_fragment"
         android:label="PatientRecordingFragment" />
 
 </navigation>

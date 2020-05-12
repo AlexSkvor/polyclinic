@@ -19,8 +19,8 @@
 
     <fragment
         android:id="@+id/doctorRecordingFragment"
-        android:name="ru.alexskvortsov.policlinic.ui.fragments.doctors.DoctorRecordingFragment"
-        tools:layout="@layout/doctor_recording_fragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.recording.RecordsFragment"
+        tools:layout="@layout/records_fragment"
         android:label="DoctorRecordingFragment" />
 
 </navigation>
