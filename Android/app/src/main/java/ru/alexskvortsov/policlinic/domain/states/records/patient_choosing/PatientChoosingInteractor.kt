@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.domain.states.recording.patient_choosing
+package ru.alexskvortsov.policlinic.domain.states.records.patient_choosing
 
 import io.reactivex.Observable
 import ru.alexskvortsov.policlinic.data.storage.database.entities.PatientEntity

@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.ui.fragments.recording
+package ru.alexskvortsov.policlinic.ui.fragments.records.patient_choosing
 
 import android.app.Dialog
 import android.content.Context
@@ -16,9 +16,9 @@ import ru.alexskvortsov.policlinic.*
 import ru.alexskvortsov.policlinic.data.service.PatientChoosingService
 import ru.alexskvortsov.policlinic.data.storage.database.entities.PatientEntity
 import ru.alexskvortsov.policlinic.domain.repository.PatientChoosingRepository
-import ru.alexskvortsov.policlinic.domain.states.recording.patient_choosing.PatientChoosingViewState
-import ru.alexskvortsov.policlinic.presentation.recording.PatientChoosingPresenter
-import ru.alexskvortsov.policlinic.presentation.recording.PatientChoosingView
+import ru.alexskvortsov.policlinic.domain.states.records.patient_choosing.PatientChoosingViewState
+import ru.alexskvortsov.policlinic.presentation.records.patient_choosing.PatientChoosingPresenter
+import ru.alexskvortsov.policlinic.presentation.records.patient_choosing.PatientChoosingView
 import ru.alexskvortsov.policlinic.toothpick.DI
 import ru.alexskvortsov.policlinic.ui.base.BaseMviDialogFragment
 import ru.alexskvortsov.policlinic.ui.utils.CardRecyclerDecoration

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/registryRecordingFragment"
-        android:name="ru.alexskvortsov.policlinic.ui.fragments.recording.RecordsFragment"
+        android:name="ru.alexskvortsov.policlinic.ui.fragments.records.list.RecordsFragment"
         android:label="RegistryRecordingFragment"
         tools:layout="@layout/records_fragment" />
 

@@ -1,8 +1,8 @@
-package ru.alexskvortsov.policlinic.presentation.recording
+package ru.alexskvortsov.policlinic.presentation.records.patient_choosing
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
 import io.reactivex.Observable
-import ru.alexskvortsov.policlinic.domain.states.recording.patient_choosing.PatientChoosingViewState
+import ru.alexskvortsov.policlinic.domain.states.records.patient_choosing.PatientChoosingViewState
 
 interface PatientChoosingView : MvpView {
 

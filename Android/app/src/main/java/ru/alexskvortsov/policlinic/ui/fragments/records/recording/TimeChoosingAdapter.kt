@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.ui.fragments.recording
+package ru.alexskvortsov.policlinic.ui.fragments.records.recording
 
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable

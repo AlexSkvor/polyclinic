@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.presentation.recording
+package ru.alexskvortsov.policlinic.presentation.records.recording
 
 import io.reactivex.Observable
 import io.reactivex.Observable.merge
@@ -8,9 +8,9 @@ import ru.alexskvortsov.policlinic.R
 import ru.alexskvortsov.policlinic.data.system.ResourceManager
 import ru.alexskvortsov.policlinic.data.system.SystemMessage
 import ru.alexskvortsov.policlinic.domain.doNothing
-import ru.alexskvortsov.policlinic.domain.states.recording.RecordingInteractor
-import ru.alexskvortsov.policlinic.domain.states.recording.RecordingPartialState
-import ru.alexskvortsov.policlinic.domain.states.recording.RecordingViewState
+import ru.alexskvortsov.policlinic.domain.states.records.recording.RecordingInteractor
+import ru.alexskvortsov.policlinic.domain.states.records.recording.RecordingPartialState
+import ru.alexskvortsov.policlinic.domain.states.records.recording.RecordingViewState
 import ru.alexskvortsov.policlinic.presentation.base.BaseMviPresenter
 import timber.log.Timber
 import javax.inject.Inject
@@ -32,7 +32,9 @@ class RecordingPresenter @Inject constructor(
 
     private val reducer = BiFunction<RecordingViewState, RecordingPartialState, RecordingViewState> { oldState, it ->
         when (it) {
-            is RecordingPartialState.PatientLoaded -> RecordingViewState(patientEntity = it.patient)
+            is RecordingPartialState.PatientLoaded -> RecordingViewState(
+                patientEntity = it.patient
+            )
             is RecordingPartialState.AllCompetencesLoaded -> oldState.copy(allCompetencesList = it.competences)
             is RecordingPartialState.CompetenceChosen -> RecordingViewState(
                 patientEntity = oldState.patientEntity,

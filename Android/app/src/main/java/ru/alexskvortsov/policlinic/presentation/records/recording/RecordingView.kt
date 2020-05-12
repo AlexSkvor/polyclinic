@@ -1,9 +1,9 @@
-package ru.alexskvortsov.policlinic.presentation.recording
+package ru.alexskvortsov.policlinic.presentation.records.recording
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
 import io.reactivex.Observable
 import org.threeten.bp.LocalDateTime
-import ru.alexskvortsov.policlinic.domain.states.recording.RecordingViewState
+import ru.alexskvortsov.policlinic.domain.states.records.recording.RecordingViewState
 
 interface RecordingView : MvpView {
 

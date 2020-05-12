@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.presentation.recording
+package ru.alexskvortsov.policlinic.presentation.records.patient_choosing
 
 import io.reactivex.Observable
 import io.reactivex.Observable.merge
@@ -7,9 +7,9 @@ import ru.alexskvortsov.policlinic.R
 import ru.alexskvortsov.policlinic.data.system.ResourceManager
 import ru.alexskvortsov.policlinic.data.system.SystemMessage
 import ru.alexskvortsov.policlinic.domain.doNothing
-import ru.alexskvortsov.policlinic.domain.states.recording.patient_choosing.PatientChoosingInteractor
-import ru.alexskvortsov.policlinic.domain.states.recording.patient_choosing.PatientChoosingPartialState
-import ru.alexskvortsov.policlinic.domain.states.recording.patient_choosing.PatientChoosingViewState
+import ru.alexskvortsov.policlinic.domain.states.records.patient_choosing.PatientChoosingInteractor
+import ru.alexskvortsov.policlinic.domain.states.records.patient_choosing.PatientChoosingPartialState
+import ru.alexskvortsov.policlinic.domain.states.records.patient_choosing.PatientChoosingViewState
 import ru.alexskvortsov.policlinic.presentation.base.BaseMviPresenter
 import timber.log.Timber
 import javax.inject.Inject

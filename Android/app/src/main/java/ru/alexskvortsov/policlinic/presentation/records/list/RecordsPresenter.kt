@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.presentation.recording
+package ru.alexskvortsov.policlinic.presentation.records.list
 
 import ru.alexskvortsov.policlinic.presentation.base.BaseMviPresenter
 import javax.inject.Inject

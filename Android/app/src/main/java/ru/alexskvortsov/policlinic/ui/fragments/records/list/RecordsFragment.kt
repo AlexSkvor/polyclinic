@@ -1,13 +1,14 @@
-package ru.alexskvortsov.policlinic.ui.fragments.recording
+package ru.alexskvortsov.policlinic.ui.fragments.records.list
 
 import android.os.Bundle
 import android.view.View
 import com.jakewharton.rxrelay2.PublishRelay
 import kotlinx.android.synthetic.main.records_fragment.*
 import ru.alexskvortsov.policlinic.R
-import ru.alexskvortsov.policlinic.presentation.recording.RecordsPresenter
-import ru.alexskvortsov.policlinic.presentation.recording.RecordsView
+import ru.alexskvortsov.policlinic.presentation.records.list.RecordsPresenter
+import ru.alexskvortsov.policlinic.presentation.records.list.RecordsView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment
+import ru.alexskvortsov.policlinic.ui.fragments.records.recording.RecordingDialogFragment
 
 class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(),
     RecordsView {

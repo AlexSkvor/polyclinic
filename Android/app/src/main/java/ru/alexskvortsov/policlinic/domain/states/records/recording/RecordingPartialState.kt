@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.domain.states.recording
+package ru.alexskvortsov.policlinic.domain.states.records.recording
 
 import org.threeten.bp.LocalDateTime
 import ru.alexskvortsov.policlinic.data.storage.database.entities.CompetenceEntity

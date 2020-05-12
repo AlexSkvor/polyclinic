@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.presentation.recording
+package ru.alexskvortsov.policlinic.presentation.records.list
 
 import com.hannesdorfmann.mosby3.mvp.MvpView
 

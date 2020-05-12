@@ -1,4 +1,4 @@
-package ru.alexskvortsov.policlinic.ui.fragments.recording
+package ru.alexskvortsov.policlinic.ui.fragments.records.recording
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -22,12 +22,13 @@ import ru.alexskvortsov.policlinic.data.storage.database.entities.DoctorEntity
 import ru.alexskvortsov.policlinic.data.storage.database.entities.PatientEntity
 import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
 import ru.alexskvortsov.policlinic.domain.repository.RecordingRepository
-import ru.alexskvortsov.policlinic.domain.states.recording.RecordingViewState
+import ru.alexskvortsov.policlinic.domain.states.records.recording.RecordingViewState
 import ru.alexskvortsov.policlinic.domain.utils.SpinnerItem
-import ru.alexskvortsov.policlinic.presentation.recording.RecordingPresenter
-import ru.alexskvortsov.policlinic.presentation.recording.RecordingView
+import ru.alexskvortsov.policlinic.presentation.records.recording.RecordingPresenter
+import ru.alexskvortsov.policlinic.presentation.records.recording.RecordingView
 import ru.alexskvortsov.policlinic.toothpick.DI
 import ru.alexskvortsov.policlinic.ui.base.BaseMviDialogFragment
+import ru.alexskvortsov.policlinic.ui.fragments.records.patient_choosing.PatientChoosingFragment
 import ru.alexskvortsov.policlinic.ui.utils.CardRecyclerDecoration
 import ru.alexskvortsov.policlinic.ui.utils.SpinnerAdapter
 import ru.alexskvortsov.policlinic.ui.utils.delegate.CompositeDelegateAdapter
@@ -36,7 +37,8 @@ import toothpick.Scope
 import toothpick.config.Module
 import java.util.concurrent.TimeUnit
 
-class RecordingDialogFragment : BaseMviDialogFragment<RecordingView, RecordingPresenter>(), RecordingView {
+class RecordingDialogFragment : BaseMviDialogFragment<RecordingView, RecordingPresenter>(),
+    RecordingView {
 
     companion object {
         fun newInstance(parentScope: String? = null, itemCreated: (String) -> Unit): RecordingDialogFragment {
@@ -221,7 +223,9 @@ class RecordingDialogFragment : BaseMviDialogFragment<RecordingView, RecordingPr
             val choosingFragment = PatientChoosingFragment.newInstance(scope.name.toString()) {
                 patientRelay.accept(it)
             }
-            choosingFragment.show(requireActivity().supportFragmentManager, PATIENT_CHOOSING_DIALOG_TAG)
+            choosingFragment.show(requireActivity().supportFragmentManager,
+                PATIENT_CHOOSING_DIALOG_TAG
+            )
             requireActivity().supportFragmentManager.executePendingTransactions()
         }
     }
