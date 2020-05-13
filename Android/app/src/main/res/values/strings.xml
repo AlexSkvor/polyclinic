@@ -48,7 +48,17 @@
     <string name="errorHappened">Произошла ошибка"</string>
     <string name="titleProfile">Ваш профиль</string>
     <string name="cancel">ОТМЕНИТЬ</string>
+    <string name="cancelConsultation">ОТМЕНИТЬ ЗАПИСЬ</string>
+    <string name="consultationCancelled">ЗАПИСЬ ОТМЕНЕНА</string>
+    <string name="saveConsultation">СОХРАНИТЬ</string>
+    <string name="closeConsultation">ЗАКРЫТЬ</string>
+    <string name="startConsultation">НАЧАТЬ ПРИЕМ</string>
+    <string name="undo">СБРОСИТЬ ВВОД</string>
     <string name="save">СОХРАНИТЬ</string>
+    <string name="titleConsultationPatient">Пациент:</string>
+    <string name="titleConsultationDoctor">Специалист:</string>
+    <string name="titleConsultation">Запись:</string>
+    <string name="titleFactConsultation">Ход приёма:</string>
 
     <!-- Registry -->
     <string name="profileUpdated">Профиль обновлён!</string>
@@ -65,7 +75,14 @@
     <string name="berthDateHint">Дата рождения</string>
     <string name="phoneHint">Номер телефона</string>
     <string name="qualifications">Квалификации:</string>
+    <string name="qualification">Квалификация</string>
+    <string name="whoCreatedHint">Запись создал(а)</string>
+    <string name="plannedStartTimeHint">Прием по плану</string>
+    <string name="factStartTimeHint">Фактическое начало приёма</string>
+    <string name="factEndTimeHint">Приём завершился</string>
+    <string name="additionalNotesHint">Дополнительная информация</string>
     <string name="chooseCompetence">Выберете компетенцию</string>
+    <string name="procedures">Услуги:</string>
 
     <!-- Patient -->
     <string name="hintPassport">Номер пасспорта</string>
@@ -73,6 +90,10 @@
     <string name="hintWeight">Вес, кг</string>
     <string name="hintHeight">Рост, см</string>
     <string name="hintSnils">Номер СНИЛС</string>
+
+    <string name="hintSurnameNotInput">Фамилия</string>
+    <string name="hintNameNotInput">Имя</string>
+    <string name="hintFathersNameNotInput">Отчество</string>
 
 
     <!-- Recording -->
@@ -97,5 +118,13 @@
     <string name="doctorConsultationInfo">Специалист: %s</string>
     <string name="dateTimeConsultationInfo">Дата %s</string>
     <string name="creatorConsultationInfo">Записал(а): %s</string>
+    <string name="agreementDialogTitle">Подтвердите действие</string>
+    <string name="confirm">Согласиться</string>
+    <string name="cancelDialogButton">Отказаться</string>
+    <string name="undoAlertMessage">Все введенные Вами данные будут потеряны, Вы уверены?</string>
+    <string name="saveAlertMessage">Приём будет завершен. Данные будут сохранены, экран закроется. Возможность редактировать данные будет утеряна. Вы согласны?</string>
+    <string name="cancelAlertMessage">Проведение приёма будет отменено. Восстановление будет невозможно. Данный экран будет закрыты и Вы вернетесь к списку. Вы подтверждаете данное действие?</string>
+    <string name="notPassed">Приём не завершен</string>
+    <string name="notStarted">Приём не проводился</string>
 
 </resources>

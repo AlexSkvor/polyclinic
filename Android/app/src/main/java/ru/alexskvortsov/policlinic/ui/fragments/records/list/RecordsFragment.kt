@@ -10,12 +10,17 @@ import io.reactivex.Observable
 import kotlinx.android.synthetic.main.records_fragment.*
 import ru.alexskvortsov.policlinic.R
 import ru.alexskvortsov.policlinic.data.service.RecordsService
+import ru.alexskvortsov.policlinic.data.storage.prefs.AppPrefs
 import ru.alexskvortsov.policlinic.domain.repository.RecordsRepository
+import ru.alexskvortsov.policlinic.domain.states.auth.UserAuthInfo
+import ru.alexskvortsov.policlinic.domain.states.records.record_info.RecordHost
+import ru.alexskvortsov.policlinic.domain.states.records.record_info.UpdateListNotifier
 import ru.alexskvortsov.policlinic.domain.states.records.list.Record
 import ru.alexskvortsov.policlinic.domain.states.records.list.RecordsViewState
 import ru.alexskvortsov.policlinic.presentation.records.list.RecordsPresenter
 import ru.alexskvortsov.policlinic.presentation.records.list.RecordsView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment
+import ru.alexskvortsov.policlinic.ui.fragments.records.detail_consultation.DoctorCreatingConsultationInfo
 import ru.alexskvortsov.policlinic.ui.fragments.records.recording.RecordingDialogFragment
 import ru.alexskvortsov.policlinic.ui.utils.CardRecyclerDecoration
 import ru.alexskvortsov.policlinic.ui.utils.delegate.CompositeDelegateAdapter
@@ -35,9 +40,18 @@ class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(), Record
         scope.installModules(object : Module() {
             init {
                 bind(RecordsRepository::class.java).to(RecordsService::class.java)
+                bind(UpdateListNotifier::class.java).toInstance(
+                    UpdateListNotifier()
+                )
+                bind(RecordHost::class.java).toInstance(
+                    RecordHost()
+                )
             }
         })
     }
+
+    private val notifier by lazy { fromScope<UpdateListNotifier>() }//TODO move to presenter
+    private val recordHost by lazy { fromScope<RecordHost>() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,12 +66,10 @@ class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(), Record
     override fun onAttach(context: Context) {
         super.onAttach(context)
         recordsAdapter.actions.pressedItems()
-            .subscribe {
-                //TODO info (creation for doctor) dialog
-            }.bind()
+            .subscribe { openDetailRecordDialog(it) }.bind()
     }
 
-    override fun reloadIntent(): Observable<Unit> = needReloadRelay.hide()
+    override fun reloadIntent(): Observable<Unit> = needReloadRelay.hide().mergeWith(notifier.actions())
     private val needReloadRelay = PublishRelay.create<Unit>()
     private fun startRecording() {
         val fragment = requireActivity().supportFragmentManager.findFragmentByTag(RECORDING_DIALOG_TAG)
@@ -102,5 +114,53 @@ class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(), Record
     private fun renderList(list: List<Record>) {
         if (!recordsAdapter.dataEquals(list))
             recordsAdapter.replaceData(list)
+    }
+
+    private val prefs by lazy { fromScope<AppPrefs>() }
+
+    private fun openDetailRecordDialog(record: Record) {
+        recordHost.record = record
+        if (record.passed) openPastDetailRecordDialog()
+        else openFutureDetailRecordDialog(record)
+    }
+
+    private fun openPastDetailRecordDialog() {
+        when (prefs.currentUser.type) {
+            UserAuthInfo.UserType.DOCTOR -> openBigPastRecord()
+            UserAuthInfo.UserType.REGISTRY -> openSmallPastRecord()
+            UserAuthInfo.UserType.PATIENT -> openBigPastRecord()
+        }
+    }
+
+    private fun openFutureDetailRecordDialog(record: Record) {
+        val userId = prefs.currentUser.userId
+        when (prefs.currentUser.type) {
+            UserAuthInfo.UserType.DOCTOR -> if (record.doctorEntity.userId == userId) openFutureRecordForDoctor()
+            else openFutureRecord()
+            UserAuthInfo.UserType.REGISTRY -> openFutureRecord()
+            UserAuthInfo.UserType.PATIENT -> openFutureRecord()
+        }
+    }
+
+    /***
+     * Big -> can cancel for future, can start if doctor, can see results
+     * Small -> can cancel for future, nothing more
+     */
+    private fun openFutureRecordForDoctor() {
+        val fragment = DoctorCreatingConsultationInfo.newInstance(scope.name.toString())
+        fragment.show(requireActivity().supportFragmentManager, DoctorCreatingConsultationInfo.TAG)
+        requireActivity().supportFragmentManager.executePendingTransactions()
+    }
+
+    private fun openFutureRecord() {
+
+    }
+
+    private fun openBigPastRecord() {
+
+    }
+
+    private fun openSmallPastRecord() {
+
     }
 }

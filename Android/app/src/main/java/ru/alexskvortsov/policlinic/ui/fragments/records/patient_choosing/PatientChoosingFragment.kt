@@ -34,8 +34,7 @@ import toothpick.Scope
 import toothpick.config.Module
 import java.util.concurrent.TimeUnit
 
-class PatientChoosingFragment : BaseMviDialogFragment<PatientChoosingView, PatientChoosingPresenter>(),
-    PatientChoosingView {
+class PatientChoosingFragment : BaseMviDialogFragment<PatientChoosingView, PatientChoosingPresenter>(), PatientChoosingView {
 
     companion object {
         fun newInstance(parentScope: String? = null, patientChosen: (String) -> Unit): PatientChoosingFragment {

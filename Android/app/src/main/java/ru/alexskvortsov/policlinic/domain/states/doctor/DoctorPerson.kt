@@ -19,7 +19,21 @@ data class DoctorPerson(
 ) {
 
     companion object {
-        fun empty() = DoctorPerson("", "", "", "", "", -1, "", true, "", "", emptyList(), "", "")
+        fun empty() = DoctorPerson(
+            "",
+            "",
+            "",
+            "",
+            "",
+            -1,
+            "",
+            true,
+            "",
+            "",
+            emptyList(),
+            "",
+            ""
+        )
     }
 
     fun isEmpty() = this == empty()

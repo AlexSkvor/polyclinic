@@ -1,6 +1,5 @@
 package ru.alexskvortsov.policlinic.domain.states.records.list
 
-import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
 import ru.alexskvortsov.policlinic.data.storage.database.entities.*
 
@@ -19,8 +18,5 @@ data class Record(
     val doctorNotes: String?
 ) {
     val passed
-        get() = endTimeFact != null
-
-    val date: LocalDate
-        get() = startTimePlan.toLocalDate()
+        get() = endTimeFact != null || cancelled
 }

@@ -44,6 +44,7 @@
     <color name="palette_yellow">#FFD800</color>
     <color name="palette_orange">#FF6300</color>
     <color name="palette_red">#FF0000</color>
+    <color name="palette_red_transparent">#27FF0000</color>
     <color name="fade">#CC000000</color>
     <color name="violent">#8B00FF</color>
     <color name="magenta">#FF00FF</color>
