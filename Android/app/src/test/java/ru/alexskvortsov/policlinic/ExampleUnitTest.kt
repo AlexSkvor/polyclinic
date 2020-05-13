@@ -19,4 +19,9 @@ class ExampleUnitTest {
     fun generateUsers() {
         UsersGenerator().generate(5)
     }
+
+    @Test
+    fun generateProcedures(){
+        ProceduresGenerator().generateProcedures()
+    }
 }

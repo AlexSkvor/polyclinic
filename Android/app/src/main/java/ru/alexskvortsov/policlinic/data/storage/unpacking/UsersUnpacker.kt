@@ -18,6 +18,7 @@ class UsersUnpacker @Inject constructor(
     private val patientDao: PatientDao,
     private val context: Context,
     private val competenceDao: CompetenceDao,
+    private val procedureDao: ProcedureDao,
     private val gson: Gson,
     @DefaultFilesDir private val filesDir: String
 ) {
@@ -27,12 +28,19 @@ class UsersUnpacker @Inject constructor(
         unpackPatients()
         unpackRegistry()
         unpackCompetence()
+        unpackProcedures()
     }
 
     private fun unpackCompetence() {
         val text = getTextForRawResourceFile(R.raw.competence)
         val list = gson.fromJson(text, Array<CompetenceEntity>::class.java).toList()
         competenceDao.insertAll(list)
+    }
+
+    private fun unpackProcedures() {
+        val text = getTextForRawResourceFile(R.raw.procedures)
+        val list = gson.fromJson(text, Array<ProcedureEntity>::class.java).toList()
+        procedureDao.insertAll(list)
     }
 
     private fun unpackDoctors() {

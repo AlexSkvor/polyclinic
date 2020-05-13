@@ -8,4 +8,4 @@ data class ProcedureEntity(
     @PrimaryKey val id: String,
     val name: String,
     val description: String
-)//TODO generate few!
+)

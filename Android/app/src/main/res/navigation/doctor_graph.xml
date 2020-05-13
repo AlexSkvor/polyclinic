@@ -2,14 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/doctorAppointmentFragment"
+    app:startDestination="@id/doctorRecordingFragment"
     android:id="@+id/doctor_graph">
-
-    <fragment
-        android:id="@+id/doctorAppointmentFragment"
-        android:name="ru.alexskvortsov.policlinic.ui.fragments.doctors.DoctorAppointmentFragment"
-        tools:layout="@layout/doctor_appointment_fragment"
-        android:label="DoctorAppointmentFragment" />
 
     <fragment
         android:id="@+id/doctorProfileFragment"
