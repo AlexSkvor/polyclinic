@@ -4,6 +4,7 @@ import org.threeten.bp.LocalDateTime
 import ru.alexskvortsov.policlinic.data.storage.database.entities.*
 
 data class Record(
+    val consultationId: String,
     val doctorEntity: DoctorEntity,
     val patientEntity: PatientEntity,
     val competenceEntity: CompetenceEntity,

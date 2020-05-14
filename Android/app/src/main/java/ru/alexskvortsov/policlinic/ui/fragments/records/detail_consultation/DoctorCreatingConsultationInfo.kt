@@ -29,7 +29,7 @@ class DoctorCreatingConsultationInfo : BaseConsultationInfoDialogFragment() {
         inflatedView.additionalNotesFactRecord.isEnabled = state.started
         inflatedView.saveButton.isEnabled = state.canSave
 
-        inflatedView.titleFactRecord.text = if (state.started) getString(R.string.notStarted)
+        inflatedView.titleFactRecord.text = if (!state.started) getString(R.string.notStarted)
         else getString(R.string.titleFactConsultation)
     }
 

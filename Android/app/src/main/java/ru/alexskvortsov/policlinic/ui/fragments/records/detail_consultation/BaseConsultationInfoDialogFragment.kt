@@ -81,7 +81,6 @@ abstract class BaseConsultationInfoDialogFragment : BaseMviDialogFragment<Consul
     private val cancelRelay = PublishRelay.create<Unit>()
     override fun cancelIntent(): Observable<Unit> = cancelRelay.hide()
 
-    //TODO filter for state started in presenter!
     override fun addProcedureIntent(): Observable<ProcedureEntity> = proceduresAdapter.actions.pressedItems()
     override fun deleteProcedureIntent(): Observable<ProcedureEntity> = proceduresAdapter.actions.deletedItems()
 
@@ -102,7 +101,9 @@ abstract class BaseConsultationInfoDialogFragment : BaseMviDialogFragment<Consul
     override fun render(state: ConsultationInfoViewState) = withRender {
         if (state.shouldCloseAndReload) dismiss()
 
-        inflatedView.setBackgroundColor(getColor(if (state.record.cancelled) R.color.palette_red_transparent else R.color.transparent))
+        inflatedView.mainParentFactConsultation.setBackgroundColor(
+            getColor(if (state.record.cancelled) R.color.palette_red_transparent else R.color.transparent)
+        )
 
         renderPatientInfo(state.changedRecord.patientEntity)
         renderDoctorInfo(state.changedRecord.doctorEntity)

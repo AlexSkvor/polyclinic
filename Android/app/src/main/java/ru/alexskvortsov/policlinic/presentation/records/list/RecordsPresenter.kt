@@ -10,6 +10,7 @@ import ru.alexskvortsov.policlinic.domain.doNothing
 import ru.alexskvortsov.policlinic.domain.states.records.list.RecordsInteractor
 import ru.alexskvortsov.policlinic.domain.states.records.list.RecordsPartialState
 import ru.alexskvortsov.policlinic.domain.states.records.list.RecordsViewState
+import ru.alexskvortsov.policlinic.domain.states.records.record_info.UpdateListNotifier
 import ru.alexskvortsov.policlinic.presentation.base.BaseMviPresenter
 import timber.log.Timber
 import javax.inject.Inject
@@ -17,7 +18,8 @@ import javax.inject.Inject
 class RecordsPresenter @Inject constructor(
     private val interactor: RecordsInteractor,
     private val systemMessage: SystemMessage,
-    private val resourceManager: ResourceManager
+    private val resourceManager: ResourceManager,
+    private val updateListNotifier: UpdateListNotifier
 ) : BaseMviPresenter<RecordsView, RecordsViewState>() {
 
     override fun bindIntents() {
@@ -56,6 +58,7 @@ class RecordsPresenter @Inject constructor(
         val typeChangeIntent = intent(RecordsView::typeChangeIntent).share()
 
         val reloadIntent = intent(RecordsView::reloadIntent)
+            .mergeWith(updateListNotifier.actions())
             .switchMapWithLastState { interactor.getRecordsList(listType) }
 
         val changeTypeIntent = typeChangeIntent

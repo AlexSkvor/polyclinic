@@ -2,6 +2,7 @@ package ru.alexskvortsov.policlinic.data.storage.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import io.reactivex.Completable
 import io.reactivex.Single
 import org.threeten.bp.LocalDate
 import ru.alexskvortsov.policlinic.data.storage.database.entities.ConsultationEntity
@@ -35,4 +36,7 @@ abstract class ConsultationDao : BaseDao<ConsultationEntity> {
 
     @Query("SELECT * FROM consultations_in_plan WHERE userAskedId = :userId AND (cancelled = :t OR id in (SELECT consultationId FROM fact_consultations))")
     abstract fun getListForRegistryIdPast(userId: String, t: Boolean = true): Single<List<ConsultationEntity>>
+
+    @Query("UPDATE consultations_in_plan SET cancelled = :cancelled WHERE id = :consultationId")
+    abstract fun marksCancelled(consultationId: String, cancelled: Boolean = true): Completable
 }

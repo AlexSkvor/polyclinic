@@ -1,572 +1,587 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/palette_red_transparent">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/consultationCancelledInfo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/marginExtraLarge"
-        android:text="@string/consultationCancelled"
-        android:textColor="@color/palette_red"
-        android:textSize="@dimen/textSizeLarge"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainParentFactConsultation"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/kostyl"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/consultationCancelledInfo">
+        android:layout_height="match_parent"
+        android:background="@color/palette_red_transparent">
+
+        <TextView
+            android:id="@+id/consultationCancelledInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/marginExtraLarge"
+            android:text="@string/consultationCancelled"
+            android:textColor="@color/palette_red"
+            android:textSize="@dimen/textSizeLarge"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/marginBig"
-            android:layout_marginTop="@dimen/marginBig"
-            android:layout_marginEnd="@dimen/marginBig"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/marginBig"
+            app:layout_constraintBottom_toTopOf="@id/kostyl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/closeButton"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/marginExtraLarge"
-                android:text="@string/closeConsultation"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/textSizeLarge" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/titlePatientProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/marginBig"
-                android:text="@string/titleConsultationPatient"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/textSizeLarge" />
-
-            <LinearLayout
-                android:id="@+id/patientInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:visibility="gone">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/surnameLayoutPatientProfile"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hintSurnameNotInput">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/surnamePatientProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="surname" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nameLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/marginBig"
                     android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintNameNotInput">
+                    android:layout_marginEnd="@dimen/marginBig"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/namePatientProfile"
+                    <TextView
+                        android:id="@+id/closeButton"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="name" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/marginExtraLarge"
+                        android:text="@string/closeConsultation"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/fathersNameLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintFathersNameNotInput">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/fathersNamePatientProfile"
+                    <TextView
+                        android:id="@+id/titlePatientProfile"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="fathersName" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/marginBig"
+                        android:text="@string/titleConsultationPatient"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/phoneLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/phoneHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phonePatientProfile"
+                    <LinearLayout
+                        android:id="@+id/patientInfo"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="+79052469003" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:visibility="gone">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/passportLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintPassport">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/surnameLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hintSurnameNotInput">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/passportPatientProfile"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/surnamePatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="surname" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/nameLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintNameNotInput">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/namePatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="name" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/fathersNameLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintFathersNameNotInput">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fathersNamePatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="fathersName" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/phoneLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/phoneHint">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/phonePatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="+79052469003" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/passportLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintPassport">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/passportPatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="1234 123456" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/omsLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintOms">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/omsPatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="1234 1234 1234 1234" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/weightLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintWeight">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/weightPatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="96" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/heightLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintHeight">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/heightPatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="196" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/snilsLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintSnils">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/snilsPatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="123 123 123 12" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/berthDateLayoutPatientProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/berthDateHint">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/berthDatePatientProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="29.12.1995" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/titleDoctorProfile"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="1234 123456" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/marginBig"
+                        android:text="@string/titleConsultationDoctor"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/omsLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintOms">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/omsPatientProfile"
+                    <LinearLayout
+                        android:id="@+id/doctorInfo"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="1234 1234 1234 1234" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:visibility="gone">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/weightLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintWeight">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/surnameLayoutDoctorProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hintSurnameNotInput">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/weightPatientProfile"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/surnameDoctorProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="surname" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/nameLayoutDoctorProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintNameNotInput">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/nameDoctorProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="name" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/fathersNameLayoutDoctorProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/hintFathersNameNotInput">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/fathersNameDoctorProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="fathersName" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/phoneLayoutDoctorProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/phoneHint">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/phoneDoctorProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="+79052469003" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/skillLevelLayoutDoctorProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/skillLevelHint">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/skillLevelDoctorProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="Старший врач" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/workExperienceYearsLayoutDoctorProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:hint="@string/workExperienceYearsHint">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/workExperienceYearsDoctorProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="1 Год" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/titleRecord"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="96" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/marginBig"
+                        android:text="@string/titleConsultation"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/heightLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintHeight">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/heightPatientProfile"
+                    <LinearLayout
+                        android:id="@+id/recordInfo"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="196" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:visibility="gone">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/snilsLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintSnils">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/competenceLayoutRecordInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/qualification">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/snilsPatientProfile"
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/competenceNameRecord"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="Стоматолог" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/whoCreatedLayoutRecordInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/whoCreatedHint">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/whoCreatedNameRecord"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="a.p.skvortsov@outlook.com" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/startDateTimeLayoutRecordInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/plannedStartTimeHint">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/startDateTimeRecord"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="29.12.1995 20:00" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/reasonLayoutRecordInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hintReasonForRecord">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/reasonRecord"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="Острая боль в области нижней челюсти." />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/titleFactRecord"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="123 123 123 12" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/marginBig"
+                        android:text="@string/titleFactConsultation"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/textSizeLarge" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/berthDateLayoutPatientProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/berthDateHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/berthDatePatientProfile"
+                    <LinearLayout
+                        android:id="@+id/factRecordInfo"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="29.12.1995" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:visibility="visible">
 
-            </LinearLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/startDateTimeFactLayoutRecordInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/factStartTimeHint">
 
-            <TextView
-                android:id="@+id/titleDoctorProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/marginBig"
-                android:text="@string/titleConsultationDoctor"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/textSizeLarge" />
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/startDateTimeFactRecord"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="29.12.1995 20:03" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:id="@+id/doctorInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:visibility="gone">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/endDateTimeFactLayoutRecordInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/factEndTimeHint">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/surnameLayoutDoctorProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hintSurnameNotInput">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/endDateTimeFactRecord"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="29.12.1995 20:03" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/surnameDoctorProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="surname" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        <TextView
+                            android:id="@+id/proceduresTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/marginBig"
+                            android:text="@string/procedures"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/textSizeExtraBig" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nameLayoutDoctorProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintNameNotInput">
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerProceduresUsed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:listitem="@layout/item_procedure"
+                            tools:visibility="gone" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nameDoctorProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="name" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/additionalNotesLayoutFactRecordInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/additionalNotesHint">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/fathersNameLayoutDoctorProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/hintFathersNameNotInput">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/additionalNotesFactRecord"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:enabled="false"
+                                android:textColor="@color/black"
+                                tools:text="Пациент был буйным, кусался." />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/fathersNameDoctorProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="fathersName" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/phoneLayoutDoctorProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/phoneHint">
+                </LinearLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phoneDoctorProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="+79052469003" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/skillLevelLayoutDoctorProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/skillLevelHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/skillLevelDoctorProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="Старший врач" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/workExperienceYearsLayoutDoctorProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:hint="@string/workExperienceYearsHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/workExperienceYearsDoctorProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="1 Год" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/titleRecord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/marginBig"
-                android:text="@string/titleConsultation"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/textSizeLarge" />
-
-            <LinearLayout
-                android:id="@+id/recordInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:visibility="gone">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/competenceLayoutRecordInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/qualification">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/competenceNameRecord"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="Стоматолог" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/whoCreatedLayoutRecordInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/whoCreatedHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/whoCreatedNameRecord"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="a.p.skvortsov@outlook.com" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/startDateTimeLayoutRecordInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/plannedStartTimeHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/startDateTimeRecord"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="29.12.1995 20:00" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/reasonLayoutRecordInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hintReasonForRecord">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/reasonRecord"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="Острая боль в области нижней челюсти." />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/titleFactRecord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/marginBig"
-                android:text="@string/titleFactConsultation"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/textSizeLarge" />
-
-            <LinearLayout
-                android:id="@+id/factRecordInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:visibility="visible">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/startDateTimeFactLayoutRecordInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/factStartTimeHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/startDateTimeFactRecord"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="29.12.1995 20:03" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/endDateTimeFactLayoutRecordInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/factEndTimeHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/endDateTimeFactRecord"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="29.12.1995 20:03" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/proceduresTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/marginBig"
-                    android:text="@string/procedures"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/textSizeExtraBig" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerProceduresUsed"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_procedure"
-                    tools:visibility="gone" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/additionalNotesLayoutFactRecordInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/additionalNotesHint">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/additionalNotesFactRecord"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:enabled="false"
-                        android:textColor="@color/black"
-                        tools:text="Пациент был буйным, кусался." />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/kostyl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/marginExtraLarge"
+            android:text="@string/cancelConsultation"
+            android:textColor="@color/palette_red"
+            android:textSize="@dimen/textSizeLarge"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/kostyl"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/marginExtraLarge"
-        android:text="@string/cancelConsultation"
-        android:textColor="@color/palette_red"
-        android:textSize="@dimen/textSizeLarge"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/cancelConsultationButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/marginExtraLarge"
+            android:text="@string/cancelConsultation"
+            android:textColor="@color/palette_red"
+            android:textSize="@dimen/textSizeLarge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/startConsultationButton"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/cancelConsultationButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/marginExtraLarge"
-        android:text="@string/cancelConsultation"
-        android:textColor="@color/palette_red"
-        android:textSize="@dimen/textSizeLarge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/startConsultationButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/startConsultationButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/marginExtraLarge"
+            android:text="@string/startConsultation"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/textSizeLarge"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cancelConsultationButton"
+            tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/startConsultationButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/marginExtraLarge"
-        android:text="@string/startConsultation"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/textSizeLarge"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cancelConsultationButton"
-        tools:visibility="visible" />
+        <TextView
+            android:id="@+id/undoButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/marginExtraLarge"
+            android:text="@string/undo"
+            android:textColor="@color/palette_red"
+            android:textSize="@dimen/textSizeLarge"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/saveButton"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/undoButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/marginExtraLarge"
-        android:text="@string/undo"
-        android:textColor="@color/palette_red"
-        android:textSize="@dimen/textSizeLarge"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/saveButton"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+        <TextView
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/marginExtraLarge"
+            android:text="@string/saveConsultation"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/textSizeLarge"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/undoButton"
+            tools:visibility="visible" />
 
-    <TextView
-        android:id="@+id/saveButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="@dimen/marginExtraLarge"
-        android:text="@string/saveConsultation"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/textSizeLarge"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/undoButton"
-        tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

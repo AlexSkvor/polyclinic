@@ -50,7 +50,6 @@ class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(), Record
         })
     }
 
-    private val notifier by lazy { fromScope<UpdateListNotifier>() }//TODO move to presenter
     private val recordHost by lazy { fromScope<RecordHost>() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,7 +68,7 @@ class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(), Record
             .subscribe { openDetailRecordDialog(it) }.bind()
     }
 
-    override fun reloadIntent(): Observable<Unit> = needReloadRelay.hide().mergeWith(notifier.actions())
+    override fun reloadIntent(): Observable<Unit> = needReloadRelay.hide()
     private val needReloadRelay = PublishRelay.create<Unit>()
     private fun startRecording() {
         val fragment = requireActivity().supportFragmentManager.findFragmentByTag(RECORDING_DIALOG_TAG)
@@ -153,14 +152,14 @@ class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(), Record
     }
 
     private fun openFutureRecord() {
-
+        TODO()
     }
 
     private fun openBigPastRecord() {
-
+        TODO()
     }
 
     private fun openSmallPastRecord() {
-
+        TODO()
     }
 }

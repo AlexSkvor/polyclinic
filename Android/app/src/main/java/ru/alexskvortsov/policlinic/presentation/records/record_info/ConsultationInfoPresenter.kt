@@ -1,7 +1,7 @@
 package ru.alexskvortsov.policlinic.presentation.records.record_info
 
 import io.reactivex.Observable
-import io.reactivex.Observable.merge
+import io.reactivex.Observable.*
 import io.reactivex.functions.BiFunction
 import org.threeten.bp.LocalDateTime
 import ru.alexskvortsov.policlinic.R
@@ -20,6 +20,7 @@ class ConsultationInfoPresenter @Inject constructor(
     private val recordHost: RecordHost,
     private val updateListNotifier: UpdateListNotifier
 ) : BaseMviPresenter<ConsultationInfoView, ConsultationInfoViewState>() {
+
     override fun bindIntents() {
         val record = requireNotNull(recordHost.record)
         val actions = getActions().share()
@@ -42,7 +43,7 @@ class ConsultationInfoPresenter @Inject constructor(
                 started = true
             )
             ConsultationInfoPartialState.Undo -> ConsultationInfoViewState(
-                record = requireNotNull(recordHost.record),
+                record = oldState.record,
                 possibleProcedures = oldState.possibleProcedures
             )
             is ConsultationInfoPartialState.AddProcedure -> oldState.copy(
@@ -85,10 +86,43 @@ class ConsultationInfoPresenter @Inject constructor(
 
     private fun getActions(): Observable<ConsultationInfoPartialState> {
 
-        TODO()
+        val initIntent = intent(ConsultationInfoView::initialIntent)
+            .switchMap { interactor.getPossibleProcedures() }
 
-        //val list = listOf()
+        val startIntent = intent(ConsultationInfoView::startIntent)
+            .map { ConsultationInfoPartialState.Start }
 
-        //return merge(list)
+        val undoAllIntent = intent(ConsultationInfoView::undoAllIntent)
+            .map { ConsultationInfoPartialState.Undo }
+
+        val saveIntent = intent(ConsultationInfoView::saveIntent)
+            .switchMapWithLastState { interactor.saveFactRecord(changedRecord) }
+
+        val cancelIntent = intent(ConsultationInfoView::cancelIntent)
+            .switchMapWithLastState { interactor.cancelIntent(record.consultationId) }
+
+        val addProcedureIntent = intent(ConsultationInfoView::addProcedureIntent)
+            .switchMapWithLastState {
+                if (started) just(ConsultationInfoPartialState.AddProcedure(it))
+                else empty()
+            }
+
+        val removeProcedureIntent = intent(ConsultationInfoView::deleteProcedureIntent)
+            .switchMapWithLastState {
+                if (started) just(ConsultationInfoPartialState.RemoveProcedure(it))
+                else empty()
+            }
+
+        val noteChangedIntent = intent(ConsultationInfoView::noteChangedIntent)
+            .switchMapWithLastState {
+                if (started) just(ConsultationInfoPartialState.ChangeNote(it))
+                else empty()
+            }
+
+        val list = listOf(
+            initIntent, startIntent, undoAllIntent, saveIntent, cancelIntent, addProcedureIntent, removeProcedureIntent, noteChangedIntent
+        )
+
+        return merge(list)
     }
 }

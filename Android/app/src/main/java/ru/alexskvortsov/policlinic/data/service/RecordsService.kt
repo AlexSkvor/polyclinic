@@ -66,6 +66,7 @@ class RecordsService @Inject constructor(
             Function6<DoctorEntity, PatientEntity, CompetenceEntity, UserEntity, FactConsultationEntity, List<ProcedureEntity>, Record>
             { doctor: DoctorEntity, patient: PatientEntity, competence: CompetenceEntity, userCreated: UserEntity, factConsultation: FactConsultationEntity, procedures: List<ProcedureEntity> ->
                 Record(
+                    consultationId = it.id,
                     doctorEntity = doctor,
                     patientEntity = patient,
                     competenceEntity = competence,
@@ -92,6 +93,7 @@ class RecordsService @Inject constructor(
             Function4<DoctorEntity, PatientEntity, CompetenceEntity, UserEntity, Record>
             { doctor: DoctorEntity, patient: PatientEntity, competence: CompetenceEntity, userCreated: UserEntity ->
                 Record(
+                    consultationId = it.id,
                     doctorEntity = doctor,
                     patientEntity = patient,
                     competenceEntity = competence,
