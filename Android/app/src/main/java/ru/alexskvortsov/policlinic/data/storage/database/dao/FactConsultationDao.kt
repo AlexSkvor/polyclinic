@@ -9,6 +9,6 @@ import ru.alexskvortsov.policlinic.data.storage.database.entities.FactConsultati
 interface FactConsultationDao : BaseDao<FactConsultationEntity> {
 
     @Query("SELECT * FROM fact_consultations WHERE consultationId = :planId")
-    fun getFactConsultationForPlan(planId: String): Single<FactConsultationEntity>
+    fun getFactConsultationForPlan(planId: String): Single<List<FactConsultationEntity>>
 
 }

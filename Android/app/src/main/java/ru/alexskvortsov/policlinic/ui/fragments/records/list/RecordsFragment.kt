@@ -20,7 +20,10 @@ import ru.alexskvortsov.policlinic.domain.states.records.list.RecordsViewState
 import ru.alexskvortsov.policlinic.presentation.records.list.RecordsPresenter
 import ru.alexskvortsov.policlinic.presentation.records.list.RecordsView
 import ru.alexskvortsov.policlinic.ui.base.BaseMviFragment
+import ru.alexskvortsov.policlinic.ui.fragments.records.detail_consultation.BigPastConsultationFragment
 import ru.alexskvortsov.policlinic.ui.fragments.records.detail_consultation.DoctorCreatingConsultationInfo
+import ru.alexskvortsov.policlinic.ui.fragments.records.detail_consultation.FutureConsultationFragment
+import ru.alexskvortsov.policlinic.ui.fragments.records.detail_consultation.SmallPastConsultationFragment
 import ru.alexskvortsov.policlinic.ui.fragments.records.recording.RecordingDialogFragment
 import ru.alexskvortsov.policlinic.ui.utils.CardRecyclerDecoration
 import ru.alexskvortsov.policlinic.ui.utils.delegate.CompositeDelegateAdapter
@@ -152,14 +155,20 @@ class RecordsFragment : BaseMviFragment<RecordsView, RecordsPresenter>(), Record
     }
 
     private fun openFutureRecord() {
-        TODO()
+        val fragment = FutureConsultationFragment.newInstance(scope.name.toString())
+        fragment.show(requireActivity().supportFragmentManager, FutureConsultationFragment.TAG)
+        requireActivity().supportFragmentManager.executePendingTransactions()
     }
 
     private fun openBigPastRecord() {
-        TODO()
+        val fragment = BigPastConsultationFragment.newInstance(scope.name.toString())
+        fragment.show(requireActivity().supportFragmentManager, BigPastConsultationFragment.TAG)
+        requireActivity().supportFragmentManager.executePendingTransactions()
     }
 
     private fun openSmallPastRecord() {
-        TODO()
+        val fragment = SmallPastConsultationFragment.newInstance(scope.name.toString())
+        fragment.show(requireActivity().supportFragmentManager, SmallPastConsultationFragment.TAG)
+        requireActivity().supportFragmentManager.executePendingTransactions()
     }
 }

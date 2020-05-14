@@ -4,6 +4,7 @@ import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.item_procedure.view.*
 import ru.alexskvortsov.policlinic.R
+import ru.alexskvortsov.policlinic.alsoPrintDebug
 import ru.alexskvortsov.policlinic.data.storage.database.entities.ProcedureEntity
 import ru.alexskvortsov.policlinic.ui.utils.delegate.DelegateAdapter
 import ru.alexskvortsov.policlinic.ui.utils.delegate.UserAction
@@ -17,12 +18,12 @@ class ProceduresAdapter(
 
     override fun onBind(item: ProcedureEntity, holder: DelegateViewHolder) = with(holder.itemView) {
 
-        procedureRadioButton.isActivated = isChosen(item)
+        procedureRadioButton.isChecked = isChosen(item)
         procedureName.text = item.name
 
         setOnClickListener {
-            if (isChosen(item)) relay.accept(UserAction.ItemPressed(item))
-            else relay.accept(UserAction.ItemDeleted(item))
+            if (!isChosen(item)) relay.accept(UserAction.ItemPressed(item.alsoPrintDebug("AAAAAAAA")))
+            else relay.accept(UserAction.ItemDeleted(item.alsoPrintDebug("BBBBBBBBBB")))
         }
     }
 

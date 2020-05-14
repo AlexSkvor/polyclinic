@@ -4,6 +4,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.consultations_detail_fragment.view.*
 import ru.alexskvortsov.policlinic.R
 import ru.alexskvortsov.policlinic.domain.states.records.record_info.ConsultationInfoViewState
+import ru.alexskvortsov.policlinic.getColor
 import ru.alexskvortsov.policlinic.toothpick.DI
 import ru.alexskvortsov.policlinic.visible
 import ru.alexskvortsov.policlinic.withArgument
@@ -18,7 +19,6 @@ class DoctorCreatingConsultationInfo : BaseConsultationInfoDialogFragment() {
     }
 
     override fun childRender(state: ConsultationInfoViewState) {
-        inflatedView.closeButton.visible = !state.started
         inflatedView.startConsultationButton.visible = !state.started
         inflatedView.cancelConsultationButton.visible = !state.started
         inflatedView.undoButton.visible = state.started
@@ -28,6 +28,8 @@ class DoctorCreatingConsultationInfo : BaseConsultationInfoDialogFragment() {
         inflatedView.titleFactRecord.isEnabled = state.started
         inflatedView.additionalNotesFactRecord.isEnabled = state.started
         inflatedView.saveButton.isEnabled = state.canSave
+
+        inflatedView.saveButton.setTextColor(getColor(if (state.canSave) R.color.colorAccent else R.color.attributeNameColor))
 
         inflatedView.titleFactRecord.text = if (!state.started) getString(R.string.notStarted)
         else getString(R.string.titleFactConsultation)

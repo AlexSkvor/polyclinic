@@ -49,7 +49,7 @@
     <string name="titleProfile">Ваш профиль</string>
     <string name="cancel">ОТМЕНИТЬ</string>
     <string name="cancelConsultation">ОТМЕНИТЬ ЗАПИСЬ</string>
-    <string name="consultationCancelled">ЗАПИСЬ ОТМЕНЕНА</string>
+    <string name="consultationCancelled">ЗАПИСЬ ОТМЕНЕНА (ЗАКРЫТЬ)</string>
     <string name="saveConsultation">СОХРАНИТЬ</string>
     <string name="closeConsultation">ЗАКРЫТЬ</string>
     <string name="startConsultation">НАЧАТЬ ПРИЕМ</string>
@@ -126,5 +126,6 @@
     <string name="cancelAlertMessage">Проведение приёма будет отменено. Восстановление будет невозможно. Данный экран будет закрыт и Вы вернетесь к списку. Вы подтверждаете данное действие?</string>
     <string name="notPassed">Приём не завершен</string>
     <string name="notStarted">Приём не проводился</string>
+    <string name="notPermitted">Нет доступа к результатам</string>
 
 </resources>

@@ -63,8 +63,8 @@ class RecordsService @Inject constructor(
             userDao.getById(it.userAskedId),
             factConsultationDao.getFactConsultationForPlan(it.id),
             proceduresDao.getProceduresForPlan(it.id),
-            Function6<DoctorEntity, PatientEntity, CompetenceEntity, UserEntity, FactConsultationEntity, List<ProcedureEntity>, Record>
-            { doctor: DoctorEntity, patient: PatientEntity, competence: CompetenceEntity, userCreated: UserEntity, factConsultation: FactConsultationEntity, procedures: List<ProcedureEntity> ->
+            Function6<DoctorEntity, PatientEntity, CompetenceEntity, UserEntity, List<FactConsultationEntity>, List<ProcedureEntity>, Record>
+            { doctor: DoctorEntity, patient: PatientEntity, competence: CompetenceEntity, userCreated: UserEntity, factConsultations: List<FactConsultationEntity>, procedures: List<ProcedureEntity> ->
                 Record(
                     consultationId = it.id,
                     doctorEntity = doctor,
@@ -76,9 +76,9 @@ class RecordsService @Inject constructor(
                     reason = it.descriptionOfReason,
                     cancelled = it.cancelled,
                     proceduresUsed = procedures,
-                    startTimeFact = factConsultation.startTimeFact,
-                    endTimeFact = factConsultation.endTimeFact,
-                    doctorNotes = factConsultation.notes
+                    startTimeFact = factConsultations.firstOrNull()?.startTimeFact,
+                    endTimeFact = factConsultations.firstOrNull()?.endTimeFact,
+                    doctorNotes = factConsultations.firstOrNull()?.notes
                 )
             }
         ).toObservable()

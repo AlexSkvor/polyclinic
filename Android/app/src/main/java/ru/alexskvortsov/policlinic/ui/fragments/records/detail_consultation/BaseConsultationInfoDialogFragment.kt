@@ -106,6 +106,9 @@ abstract class BaseConsultationInfoDialogFragment : BaseMviDialogFragment<Consul
     override fun render(state: ConsultationInfoViewState) = withRender {
         if (state.shouldCloseAndReload) dismiss()
 
+        inflatedView.consultationCancelledInfo.visible = state.record.cancelled
+        inflatedView.closeButton.visible = !state.record.cancelled && !state.started
+
         inflatedView.mainParentFactConsultation.setBackgroundColor(
             getColor(if (state.record.cancelled) R.color.palette_red_transparent else R.color.transparent)
         )
@@ -115,7 +118,10 @@ abstract class BaseConsultationInfoDialogFragment : BaseMviDialogFragment<Consul
         renderRecordInfo(state.changedRecord)
         renderFactRecordInfo(state.changedRecord)
 
-        selectedProcedures = state.record.proceduresUsed.orEmpty()
+        if (selectedProcedures != state.changedRecord.proceduresUsed.orEmpty()) {
+            selectedProcedures = state.changedRecord.proceduresUsed.orEmpty()
+            proceduresAdapter.notifyDataSetChanged()
+        }
         if (!proceduresAdapter.dataEquals(state.possibleProcedures))
             proceduresAdapter.replaceData(state.possibleProcedures)
 
@@ -193,6 +199,7 @@ abstract class BaseConsultationInfoDialogFragment : BaseMviDialogFragment<Consul
             showAlert(getString(R.string.cancelAlertMessage)) { cancelRelay.accept(Unit) }
         }
         inflatedView.closeButton.setOnClickListener { dismiss() }
+        inflatedView.consultationCancelledInfo.setOnClickListener { dismiss() }
     }
 
     private fun showAlert(message: String, onAgree: () -> Unit) {
