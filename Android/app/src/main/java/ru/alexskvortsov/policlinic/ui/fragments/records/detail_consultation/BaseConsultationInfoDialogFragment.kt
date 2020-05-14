@@ -2,7 +2,9 @@ package ru.alexskvortsov.policlinic.ui.fragments.records.detail_consultation
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jakewharton.rxbinding3.view.clicks
@@ -61,11 +63,14 @@ abstract class BaseConsultationInfoDialogFragment : BaseMviDialogFragment<Consul
         setListenersForTitles()
         setDangerousButtonsListeners()
         setupRecycler()
-
         return AlertDialog.Builder(requireContext(), R.style.DialogTheme)
             .setView(inflatedView)
-            .setCancelable(false)
             .create()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        isCancelable = false
+        return inflatedView
     }
 
     override fun initialIntent(): Observable<Unit> = just(Unit)
